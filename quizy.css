@@ -8,14 +8,14 @@
     text-align: center;
     font-family: "HiraKakuPro-W6";
     margin: 5% 10%;
-  }
+  }/* 選択肢の形式 */
   .cannotClick{
     pointer-events:none;
-  }
+  }/*クリックした後ポインタを無効*/
   .contain{
       margin: 0 auto;
   width:90%;
-  }
+  }/*テキスト*/
   .p{
     text-align:center;
     color : black(255, 25, 255, 0);
