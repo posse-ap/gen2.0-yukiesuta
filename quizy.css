@@ -26,20 +26,26 @@
     text-decoration : underline yellow;
   }
 
+.ans{
+  display: none;
+  background-color: rgb(245,245,245);
+}
+
+
   img{
     margin:0%;
     width: 100%;
   }
-  .answerITrue{ display:none;
+  .answerTrue{ display:none;
     background-color: rgb(245,245,245);
   }
-  .answerIFalse{ display:none;
+  .answerFalse{ display:none;
       background-color: rgb(245,245,245);
   }
   
-  .answer_boxI1{ 
+  .answer_box{ 
     text-decoration : underline rgb(41,125,254);
   }
-  .answer_boxI23{ 
+  .answer_boxI{ 
     text-decoration : underline rgb(255,80,40);
   }
