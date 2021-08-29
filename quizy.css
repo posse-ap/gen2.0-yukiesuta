@@ -43,9 +43,11 @@
       background-color: rgb(245,245,245);
   }
   
-  .answer_box{ 
+  .correct_answer{ 
     text-decoration : underline rgb(41,125,254);
+    font-size: 30px;
   }
-  .answer_boxI{ 
+  .incorrect_answer{ 
     text-decoration : underline rgb(255,80,40);
+    font-size: 30px;
   }
