@@ -13,15 +13,15 @@ const pic = [
 
 box1 = [
     ["たかなわ","たかわ","こうわ"],
-    ["かめど","かめいど","かめと"],
-    ["かゆまち","おかとまち","こうじまち"],
-    ["おかどもん","おなりもん","ごせいもん"],
-    ["たたりき","たたら","とどろき"],
-    ["いじい","しゃくじい","せきこうい"],
+    ["かめいど","かめど","かめと"],
+    ["こうじまち","おかとまち","かゆまち"],
+    ["ごせいもん","おなりもん","おかどもん"],
+    ["とどろき","たたら","たたりき"],
+    ["しゃくじい","いじい","せきこうい"],
     ["ざっしょく","ざっしき","ぞうしき"],
-    ["ごしろちょう","おかちまち","みとちょう"],
-    ["ししぼね","ろっこつ","しこね"],
-    ["こばく","こしゃく","こぐれ"]
+    ["おかちまち","ごしろちょう","みとちょう"],
+    ["しこね","ろっこつ","ししぼね"],
+    ["こぐれ","こしゃく","こしゃく"]
 ];   //配列の中の配列 何問目のいくつかという考え方
 
 boxAns = [
@@ -49,12 +49,12 @@ let classes =
     `<p id="choice3_${count+1}" class="box">${box1 [count] [2]}</p>`+
 
     `<div class="ans" id="ansT_${count+1}">`+
-        '<h1 class="answer_boxI1">'+'正解！'+'</h1>'+
+        '<div class="answerT">'+'<span class="correct_answer">'+'正解！'+'</span>'+'</div>'+
         `正解は「${boxAns [count]}」です！`+
     '</div>'+
 
     `<div class="ans" id="ansF_${count+1}">`+
-        '<h1 class="answer_boxI23">'+'不正解！'+'</h1>'+
+    '<div class="answerT">'+'<span class="incorrect_answer">'+'不正解！'+'</span>'+'</div>'+
         `正解は「${boxAns [count]}」です！`+
     '</div>'+
 
@@ -64,35 +64,38 @@ let classes =
 };
 //HTMLの操作
 
-for(let  count=0;count<10;count++){
+// document.getElementById()を記述してIDを取得する
 
+for(let  count=0;count<10;count++){
     document.getElementById(`choice1_${count+1}`).onclick = function () {
         document.getElementById(`choice1_${count+1}`).style.backgroundColor = "rgb(41,125,254)"; //選択肢の文字
         document.getElementById(`choice1_${count+1}`).style.color = "white";  //選択肢の背景
         document.getElementById(`ansT_${count+1}`).style.display = "block"; //答えの表示
-        // `choice1_${count+1}`.classList.add("cannotClick");//クリックできなくする
-        // `choice2_${count+1}`.classList.add("cannotClick");//クリックできなくする
-        // `choice3_${count+1}`.classList.add("cannotClick");//クリックできなくする
+// console.log(document.getElementById(`ansT_${count+1}`));
+        document.getElementById(`choice1_${count+1}`).classList.add("cannotClick");//クリックできなくする
+        document.getElementById(`choice2_${count+1}`).classList.add("cannotClick");//クリックできなくする
+        document.getElementById(`choice3_${count+1}`).classList.add("cannotClick");//クリックできなくする
     };
     document.getElementById(`choice2_${count+1}`).onclick = function () {
         document.getElementById(`choice1_${count+1}`).style.backgroundColor = "rgb(41,125,254)";
         document.getElementById(`choice1_${count+1}`).style.color = "white";
         document.getElementById(`choice2_${count+1}`).style.backgroundColor = "rgb(255,80,40)";
         document.getElementById(`choice2_${count+1}`).style.color = "white";
-        `ansF_${count+1}`.style.display = "block"; 
-        // `choice1_${count+1}`.classList.add("cannotClick");
-        // `choice2_${count+1}`.classList.add("cannotClick");
-        // `choice3_${count+1}`.classList.add("cannotClick");
+        document.getElementById(`ansF_${count+1}`).style.display = "block"; 
+        document.getElementById(`choice1_${count+1}`).classList.add("cannotClick");//クリックできなくする
+        document.getElementById(`choice2_${count+1}`).classList.add("cannotClick");//クリックできなくする
+        document.getElementById(`choice3_${count+1}`).classList.add("cannotClick");//クリックできなくする
     };
     document.getElementById(`choice3_${count+1}`).onclick = function () {
         document.getElementById(`choice1_${count+1}`).style.backgroundColor = "rgb(41,125,254)";
         document.getElementById(`choice1_${count+1}`).style.color = "white";
         document.getElementById(`choice3_${count+1}`).style.backgroundColor = "rgb(255,80,40)";
         document.getElementById(`choice3_${count+1}`).style.color = "white";
-        `ansF_${count+1}`.style.display = "block"; 
-        // `choice1_${count+1}`.classList.add("cannotClick");
-        // `choice2_${count+1}`.classList.add("cannotClick");
-        // `choice3_${count+1}`.classList.add("cannotClick");
+        document.getElementById(`ansF_${count+1}`).style.display = "block"; 
+        document.getElementById(`choice1_${count+1}`).classList.add("cannotClick");//クリックできなくする
+        document.getElementById(`choice2_${count+1}`).classList.add("cannotClick");//クリックできなくする
+        document.getElementById(`choice3_${count+1}`).classList.add("cannotClick");//クリックできなくする
     };
 };
 //関数の操作
+// console=よくわからないところどこまで動いているかを調べる デバック
