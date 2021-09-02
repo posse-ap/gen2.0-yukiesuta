@@ -1,3 +1,4 @@
+
 const pic = [
     "https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png",
     "https://d1khcm40x1j0f.cloudfront.net/quiz/512b8146e7661821c45dbb8fefedf731.png",
@@ -11,7 +12,7 @@ const pic = [
     "https://d1khcm40x1j0f.cloudfront.net/words/34508ddb0789ee73471b9f17977e7c9c.png",
 ];
 
-array = [
+box1 = [
     ["たかなわ","たかわ","こうわ"],
     ["かめいど","かめど","かめと"],
     ["こうじまち","おかとまち","かゆまち"],
@@ -24,9 +25,6 @@ array = [
     ["こぐれ","こしゃく","こしゃく"]
 ];   //配列の中の配列 何問目のいくつかという考え方
 
-
-//シャッフルの関数かを使う
-//シャッフルの引数に
 
 boxAns = [
     "たかなわ",
@@ -43,15 +41,34 @@ boxAns = [
 
 
 for(let count =0;count<10;count++){
+
+const　number = [0,1,2];//シャッフル前の配列
+
+const newNumber = [];//シャッフル後の配列
+
+
+while (number.length > 0) {
+    n = number.length;
+    k = Math.floor(Math.random() * n);
+    
+    newNumber.push(number[k]);
+    number.splice(k, 1);
+}//numberのシャッフル
+
+console.log(newNumber)
+
+
+
+
 let classes = 
 '<div class="contain">'+
 
     `<p><span class="question">${count+1}.この地名はなんて読む？</span></p>`+
     `<img src="${pic[count]}"/>`+
 
-    `<p id="choice1_${count+1}" class="box">${newArray [count] [0]}</p>`+
-    `<p id="choice2_${count+1}" class="box">${newArray [count] [1]}</p>`+
-    `<p id="choice3_${count+1}" class="box">${newArray [count] [2]}</p>`+
+    `<p id="choice1_${count+1}" class="box">${box1 [count] [newNumber[0]]}</p>`+
+    `<p id="choice2_${count+1}" class="box">${box1 [count] [newNumber[1]]}</p>`+
+    `<p id="choice3_${count+1}" class="box">${box1 [count] [newNumber[2]]}</p>`+
 
     `<div class="ans" id="ansT_${count+1}">`+
         '<div class="answerT">'+'<span class="correct_answer">'+'正解！'+'</span>'+'</div>'+
