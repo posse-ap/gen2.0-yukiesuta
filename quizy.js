@@ -54,12 +54,9 @@ boxAns = [
 // while (boxAns.length > 0) {
 // 　n = boxAns.length;
 // 　k = Math.floor(Math.random() * n);
-
 // 　newArray.push(boxAns[k]);
 // 　boxAns.splice(k, 1);
 // }
-
-
 // console.log("シャッフル", newArray);
 
 // n = boxAns.length
