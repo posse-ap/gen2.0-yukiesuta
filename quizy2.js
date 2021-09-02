@@ -37,7 +37,6 @@
             while (number.length > 0) {
                 n = number.length;
                 k = Math.floor(Math.random() * n);
-                
                 newNumber.push(number[k]);
                 number.splice(k, 1);
             }
