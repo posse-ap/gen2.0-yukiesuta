@@ -75,9 +75,9 @@
         console.log(number [0])//０を指名することにより常に一つ目（正解の選択肢）を採用
         
         document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).onclick = function () {
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.backgroundColor = "rgb(41,125,254)"; //選択肢の文字
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.color = "white";  //選択肢の背景
-            document.getElementById(`ansT_${count+1}`).style.display = "block"; //答えの表示
+            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.backgroundColor = "rgb(41,125,254)";//選択肢の文字
+            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.color = "white";//選択肢の背景
+            document.getElementById(`ansT_${count+1}`).style.display = "block";//答えの表示
             document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).classList.add("cannotClick");//クリックできなくする
             document.getElementById(`choice${box1 [count] [number[1]]}_${count+1}`).classList.add("cannotClick");//クリックできなくする
             document.getElementById(`choice${box1 [count] [number[2]]}_${count+1}`).classList.add("cannotClick");//クリックできなくする
