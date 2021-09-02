@@ -1,4 +1,4 @@
-//配列の宣言
+//配列
     const pic = [
         "https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png",
         "https://d1khcm40x1j0f.cloudfront.net/quiz/512b8146e7661821c45dbb8fefedf731.png",
@@ -23,7 +23,7 @@
         ["おかちまち","ごしろちょう","みとちょう"],
         ["しこね","ろっこつ","ししぼね"],
         ["こぐれ","こしゃく","こしゃく"]
-    ];   //選択肢　一つ目を答えにする　配列の中の配列 何問目のいくつかという考え方
+    ]; //選択肢　一つ目を答えにする　配列の中の配列 何問目のいくつかという考え方
 
 
 //HTMLの操作（for文ループ）
@@ -67,7 +67,7 @@
     };
 
 
-// JSはdocument.getElementById()を記述してIDを取得する
+// JSの操作　jsはdocument.getElementById()を記述してIDを取得する
     for(let  count=0;count<10;count++){
         const　number = [0,1,2];//正誤判定は一つ目が正解にしたいからシャッフルしない
         
