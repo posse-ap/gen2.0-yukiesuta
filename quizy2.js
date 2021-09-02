@@ -24,15 +24,6 @@ array = [
     ["こぐれ","こしゃく","こしゃく"]
 ];   //配列の中の配列 何問目のいくつかという考え方
 
-newArray = [];
-
-while (array.length > 0) {
-    n = array.length;
-    k = Math.floor(Math.random() * n);
-
-    newArray.push(array[k]);
-    array.splice(k, 1);
-}
 
 //シャッフルの関数かを使う
 //シャッフルの引数に
@@ -49,32 +40,7 @@ boxAns = [
     "しこね",
     "こぐれ"
 ];
-// newArray = [];
 
-// while (boxAns.length > 0) {
-// 　n = boxAns.length;
-// 　k = Math.floor(Math.random() * n);
-
-// 　newArray.push(boxAns[k]);
-// 　boxAns.splice(k, 1);
-// }
-
-
-// console.log("シャッフル", newArray);
-
-// n = boxAns.length
-// k = Math.floor(Math.random() * n);
-
-// newBoxAns = []
-
-// newBoxAns.push(boxAns[k]);  // array の3番目を newArray に追加
-// array.splice(k, 1);       // array の3番目を削除
-
-// console.log(newBoxAns);    // [4]
-// console.log(boxAns);  
-
-// // arrayShuffle(boxAns);
-// // console.log(boxAns);
 
 for(let count =0;count<10;count++){
 let classes = 
