@@ -73,7 +73,7 @@
         console.log(number)
         console.log(number [0])//０を指名することにより常に一つ目（正解の選択肢）を採用
 
-        // 定数でおいて記述量を減らした
+        // 定数でおいて記述量を減らす
         const getId0 = document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`);
         const getId1 = document.getElementById(`choice${box1 [count] [number[1]]}_${count+1}`);
         const getId2 = document.getElementById(`choice${box1 [count] [number[2]]}_${count+1}`);
