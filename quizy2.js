@@ -44,7 +44,7 @@
             let classes = 
             '<div class="contain">'+
                 `<p><span class="question">${count+1}.この地名はなんて読む？</span></p>`+
-                `<img src="${pic[count]}"/>`+
+                `<div class="pic">`+`<img src="${pic[count]}"/>`+`</div>`+
                 `<p id="choice${box1 [count] [newNumber[0]]}_${count+1}" class="box">${box1 [count] [newNumber[0]]}</p>`+
                 `<p id="choice${box1 [count] [newNumber[1]]}_${count+1}" class="box">${box1 [count] [newNumber[1]]}</p>`+
                 `<p id="choice${box1 [count] [newNumber[2]]}_${count+1}" class="box">${box1 [count] [newNumber[2]]}</p>`+
