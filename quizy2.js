@@ -73,32 +73,39 @@
         console.log(number)
         console.log(number [0])//０を指名することにより常に一つ目（正解の選択肢）を採用
         
-        document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).onclick = function () {
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.backgroundColor = "rgb(41,125,254)";//選択肢の文字
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.color = "white";//選択肢の背景
-            document.getElementById(`ansT_${count+1}`).style.display = "block";//答えの表示
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).classList.add("cannotClick");//クリックできなくする
-            document.getElementById(`choice${box1 [count] [number[1]]}_${count+1}`).classList.add("cannotClick");//クリックできなくする
-            document.getElementById(`choice${box1 [count] [number[2]]}_${count+1}`).classList.add("cannotClick");//クリックできなくする
+        const getId0 = document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`);
+        const getId1 = document.getElementById(`choice${box1 [count] [number[1]]}_${count+1}`);
+        const getId2 = document.getElementById(`choice${box1 [count] [number[2]]}_${count+1}`);
+        const ansT = document.getElementById(`ansT_${count+1}`);
+        const ansF = document.getElementById(`ansF_${count+1}`);
+
+
+        getId0.onclick = function () {
+            getId0.style.backgroundColor = "rgb(41,125,254)";//選択肢の文字
+            getId0.style.color = "white";//選択肢の背景
+            ansT.style.display = "block";//答えの表示
+            getId0.classList.add("cannotClick");//クリックできなくする
+            getId1.classList.add("cannotClick");//クリックできなくする
+            getId2.classList.add("cannotClick");//クリックできなくする
         };
-        document.getElementById(`choice${box1 [count] [number[1]]}_${count+1}`).onclick = function () {
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.backgroundColor = "rgb(41,125,254)";
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.color = "white";
-            document.getElementById(`choice${box1 [count] [number[1]]}_${count+1}`).style.backgroundColor = "rgb(255,80,40)";
-            document.getElementById(`choice${box1 [count] [number[1]]}_${count+1}`).style.color = "white";
-            document.getElementById(`ansF_${count+1}`).style.display = "block"; 
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).classList.add("cannotClick");
-            document.getElementById(`choice${box1 [count] [number[1]]}_${count+1}`).classList.add("cannotClick");
-            document.getElementById(`choice${box1 [count] [number[2]]}_${count+1}`).classList.add("cannotClick");
+        getId1.onclick = function () {
+            getId0.style.backgroundColor = "rgb(41,125,254)";
+            getId0.style.color = "white";
+            getId1.style.backgroundColor = "rgb(255,80,40)";
+            getId1.style.color = "white";
+            ansF.style.display = "block"; 
+            getId0.classList.add("cannotClick");
+            getId1.classList.add("cannotClick");
+            getId2.classList.add("cannotClick");
         };
-        document.getElementById(`choice${box1 [count] [number[2]]}_${count+1}`).onclick = function () {
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.backgroundColor = "rgb(41,125,254)";
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).style.color = "white";
-            document.getElementById(`choice${box1 [count] [number[2]]}_${count+1}`).style.backgroundColor = "rgb(255,80,40)";
-            document.getElementById(`choice${box1 [count] [number[2]]}_${count+1}`).style.color = "white";
-            document.getElementById(`ansF_${count+1}`).style.display = "block"; 
-            document.getElementById(`choice${box1 [count] [number[0]]}_${count+1}`).classList.add("cannotClick");
-            document.getElementById(`choice${box1 [count] [number[1]]}_${count+1}`).classList.add("cannotClick");
-            document.getElementById(`choice${box1 [count] [number[2]]}_${count+1}`).classList.add("cannotClick");
+        getId2.onclick = function () {
+            getId0.style.backgroundColor = "rgb(41,125,254)";
+            getId0.style.color = "white";
+            getId2.style.backgroundColor = "rgb(255,80,40)";
+            getId2.style.color = "white";
+            ansF.style.display = "block"; 
+            getId0.classList.add("cannotClick");
+            getId1.classList.add("cannotClick");
+            getId2.classList.add("cannotClick");
         };
     };
