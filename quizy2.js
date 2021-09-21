@@ -23,13 +23,13 @@
         ["おかちまち","ごしろちょう","みとちょう"],
         ["しこね","ろっこつ","ししぼね"],
         ["こぐれ","こしゃく","こしゃく"]
-    ]; //選択肢　一つ目を答えにする　配列の中の配列 何問目のいくつかという考え方
+    ]; //選択肢一つ目を答えにする配列の中の配列 何問目のいくつかという考え方
 
 //HTMLの操作（for文ループ）
     for(let count =0;count<10;count++){
     
         //シャッフル前の配列
-            const　number = [0,1,2];
+            const number = [0,1,2];
         //シャッフル後の配列（選択肢をシャッフルさせる）
             const newNumber = [];
         //シャッフルの記述
@@ -66,9 +66,9 @@
     };
 
 
-// JSの操作　jsはdocument.getElementById()を記述してIDを取得する
+// JSの操作 jsはdocument.getElementById()を記述してIDを取得する
     for(let  count=0;count<10;count++){
-        const　number = [0,1,2];//正誤判定は一つ目が正解にしたいからシャッフルしない
+        const number = [0,1,2];//正誤判定は一つ目が正解にしたいからシャッフルしない
         
         console.log(number)
         console.log(number [0])//０を指名することにより常に一つ目（正解の選択肢）を採用
