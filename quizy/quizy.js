@@ -61,6 +61,7 @@ for(let count =0;count<10;count++){
     
     document.currentScript.insertAdjacentHTML('beforebegin',classes);
     
+    console.log(number)
     console.log(newNumber)
     console.log(newNumber [0])//一週目のランダム数字はどこであれど同じ
 };
