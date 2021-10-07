@@ -19,13 +19,15 @@ for(let count =0;count<option.length;count++){
     `<img src="${count+1}.png"/>`+`<div id="imgNext${count}"></div>`+
     
     //デフォルトではCSSによる非表示にしてクリックして適切に表示
-    `<div class="ans" id="ansT_${count+1}">`+
+    `<div class="ansT" id="ansT_${count+1}">`+
         '正解！'+
     '</div>'+
-    `<div class="ans" id="ansF_${count+1}">`+
+
+    `<div class="ansF" id="ansF_${count+1}">`+
         '不正解！'+
     '</div>'+
-    '<div>'+
+
+    '<div class="ans">'+
     `正解は「${option [count][0]}」です！`+
     '</div>';
     
