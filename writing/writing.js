@@ -20,13 +20,13 @@ for(let count =0;count<option.length;count++){
     
     //デフォルトではCSSによる非表示にしてクリックして適切に表示
     `<div class="ans" id="ansT_${count+1}">`+
-    '<div class="answerT">'+'<span class="correct_answer">'+'正解！'+'</span>'+'</div>'+
-    `正解は「${option [count][0]}」です！`+
+        '正解！'+
     '</div>'+
     `<div class="ans" id="ansF_${count+1}">`+
-    '<div class="answerT">'+'<span class="incorrect_answer">'+'不正解！'+'</span>'+'</div>'+
-    `正解は「${option [count][0]}」です！`+
+        '不正解！'+
     '</div>'+
+    '<div>'+
+    `正解は「${option [count][0]}」です！`+
     '</div>';
     
     document.currentScript.insertAdjacentHTML('beforebegin',classes);
@@ -47,7 +47,6 @@ for(let count =0;count<option.length;count++){
         
         let optionLoop =
         `<p id="choice${option [count] [newNumber[i]]}_${count+1}" class="box">${option [count] [newNumber[i]]}</p>`
-        // document.currentScript.insertAdjacentHTML('beforebegin',optionLoop);
         document.getElementById(`imgNext${count}`).insertAdjacentHTML('afterEnd', optionLoop);
         console.log(`imgNext${count}`)
         console.log(document.getElementById(`imgNext${count}`))
