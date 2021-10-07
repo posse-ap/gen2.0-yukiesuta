@@ -10,7 +10,7 @@ for(let count =0;count<option.length;count++){
     let classes = 
     '<div class="contain">'+
     `<p><span class="question">${count+1}.この地名はなんて読む？</span></p>`+
-    `<img src="${count+1}.png"/>`+`<div class="imgNext${count}></div>`+
+    `<img src="${count+1}.png"/>`+`<div id="imgNext${count}"></div>`+
     
     //デフォルトではCSSによる非表示にしてクリックして適切に表示
     `<div class="ans" id="ansT_${count+1}">`+
@@ -46,7 +46,9 @@ for(let count =0;count<option.length;count++){
         
         let optionLoop =
         `<p id="choice${option [count] [newNumber[i]]}_${count+1}" class="box">${option [count] [newNumber[i]]}</p>`
-        document.currentScript.insertAdjacentHTML('beforebegin',optionLoop);
-        // document.getElementById('imgNext${count}').insertAdjacentHTML('beforeend', optionLoop);
-    }
-}
+        // document.currentScript.insertAdjacentHTML('beforebegin',optionLoop);
+        document.getElementById(`imgNext${count}`).insertAdjacentHTML('afterEnd', optionLoop);
+        console.log(`imgNext${count}`)
+        console.log(document.getElementById(`imgNext${count}`))
+    };
+};
