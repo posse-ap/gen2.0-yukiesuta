@@ -4,6 +4,12 @@ let option =[
     ["こうじまち","おかとまち","かゆまち"]
 ]
 
+//シャッフル前の配列
+const number = [0,1,2];
+//シャッフル後の配列（選択肢をシャッフルさせる）
+const newNumber = [];
+console.log(number);
+
 for(let count =0;count<option.length;count++){
     
     //本文
@@ -27,11 +33,6 @@ for(let count =0;count<option.length;count++){
     
     for(let j =0;j<3;j++){
 
-        //シャッフル前の配列
-        const number = [0,1,2];
-        //シャッフル後の配列（選択肢をシャッフルさせる）
-        const newNumber = [];
-        console.log(number)
     
         //シャッフルの記述
             while (number.length > 0) {
