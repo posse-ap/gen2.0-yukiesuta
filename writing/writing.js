@@ -32,25 +32,49 @@ for(let count =0;count<option.length;count++){
     '</div>';
     
     document.currentScript.insertAdjacentHTML('beforebegin',classes);
-    
-    for(let j =0;j<3;j++){
 
     
+for(let j =0;j<3;j++){
         //シャッフルの記述
-            while (number.length > 0) {
-                n = number.length;
-                k = Math.floor(Math.random() * n);
-                newNumber.push(number[k]);
-                number.splice(k, 1);
-            }
-            console.log(newNumber[0])
-
+        while (number.length > 0) {
+            n = number.length;
+            k = Math.floor(Math.random() * n);
+            newNumber.push(number[k]);
+            number.splice(k, 1);
+        }
+        console.log(newNumber[0]);
+        
         i = newNumber[j];
         
         let optionLoop =
-        `<p id="choice${option [count] [newNumber[i]]}_${count+1}" class="box">${option [count] [newNumber[i]]}</p>`
+        `<p id="choice${option [count] [newNumber[i]]}_${count+1}" class="box${count}">${option [count] [newNumber[i]]}</p>`;
         document.getElementById(`imgNext${count}`).insertAdjacentHTML('afterEnd', optionLoop);
-        console.log(`imgNext${count}`)
-        console.log(document.getElementById(`imgNext${count}`))
+        console.log(`imgNext${count}`);
+        console.log(document.getElementById(`imgNext${count}`));
+        console.log(document.getElementById(`choice${option [count] [newNumber[i]]}_${count+1}`));
+        // console.log(document.getElementById(`choice${option [count] [newNumber[i]]}_${count+1}`).indexOf(`${option[0]}`);
+        // document.getElementById(`choice${option [count] [newNumber[k]]}_${count+1}`).onclick = function(){
+        //     document.getElementById(`ansT_${count+1}`).style.display = "block";//答えの表示
+        // }
+        // if(document.getElementById(`choice${option [count] [newNumber[i]]}_${count+1}`).indexOf(`${option[0]}`)){
+        //     document.getElementById(`ansT_${count+1}`).style.display = "block"
+        // }else{
+        //     document.getElementById(`ansF_${count+1}`).style.display = "block"
+        // };
     };
+    // if(document.getElementById(`choice${option [count] [newNumber[k]]}_${count+1}`).onclick.indexOf(document.getElementById(`choice${option [count] [newNumber[i]]}_${count+1}`)) !=-1){
+    //     document.getElementById(`ansT_${count+1}`).style.display = "block"
+    // }else{
+    //     document.getElementById(`ansF_${count+1}`).style.display = "block"
+    // };
+    console.log(document.getElementById(`choice${option[count][0]}_${count+1}`));
+    
+    console.log(document.getElementsByClassName(`box${count}`));
+
+
+    document.getElementById(`choice${option [count] [newNumber[0]]}_${count+1}`).onclick = function(){
+        // ここに#buttonをクリックしたら発生させる処理を記述する
+        document.getElementById(`ansT_${count+1}`).style.display = "block";
+        console.log("aaa");};
+    // document.getElementById(`ansT_${count+1}`).style.display = "block";
 };
