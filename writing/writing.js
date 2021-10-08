@@ -27,7 +27,7 @@ for(let count =0;count<option.length;count++){
         '不正解！'+
     '</div>'+
 
-    '<div class="ans">'+
+    `<div class="ans_${count} ans" id="ans_${count+1}">`+
     `正解は「${option [count][0]}」です！`+
     '</div>';
     
@@ -72,14 +72,35 @@ for(let j =0;j<3;j++){
     console.log(document.getElementsByClassName(`box${count}`));
 
 
+    function afterPush (){
+        for(let l=0;l<3;l++){
+            document.getElementById(`choice${option [count] [`${l}`]}_${count+1}`).style.cursor = "pointer";
+            document.getElementById(`choice${option [count] [`${l}`]}_${count+1}`).style.pointerEvents = "none";
+        };
+    };
+    
+
+
+    
     document.getElementById(`choice${option [count] [0]}_${count+1}`).onclick = function(){
         document.getElementById(`ansT_${count+1}`).style.display = "block";
+        document.getElementById(`ans_${count+1}`).style.display = "block";
+        afterPush;
         console.log("aaa");
         };
 
     for(let k=0;k<2;k++){
         document.getElementById(`choice${option [count] [`${k+1}`]}_${count+1}`).onclick = function(){
             document.getElementById(`ansF_${count+1}`).style.display = "block";
+            document.getElementById(`ans_${count+1}`).style.display = "block";
+            afterPush;
+
+            for(let l=0;l<3;l++){
+                document.getElementById(`choice${option [count] [`${l}`]}_${count+1}`).style.cursor = "pointer";
+                document.getElementById(`choice${option [count] [`${l}`]}_${count+1}`).style.pointerEvents = "none";
+            };
+
+
             console.log("aaa");
         };
     };
