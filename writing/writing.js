@@ -4,13 +4,14 @@ let option =[
     ["こうじまち","おかとまち","かゆまち"]
 ]
 
-//シャッフル前の配列
-const number = [0,1,2];
-//シャッフル後の配列（選択肢をシャッフルさせる）
-const newNumber = [];
-console.log(number);
 
 for(let count =0;count<option.length;count++){
+
+    //シャッフル前の配列
+    const number = [0,1,2];
+    //シャッフル後の配列（選択肢をシャッフルさせる）let にする
+    let newNumber = [];
+    console.log(number);
     
     //本文
     let classes = 
@@ -34,7 +35,9 @@ for(let count =0;count<option.length;count++){
     document.currentScript.insertAdjacentHTML('beforebegin',classes);
 
     
-for(let j =0;j<3;j++){
+    
+    for(let j =0;j<3;j++){
+
         //シャッフルの記述
         while (number.length > 0) {
             n = number.length;
@@ -44,8 +47,9 @@ for(let j =0;j<3;j++){
         }
         console.log(newNumber[0]);
         
-        i = newNumber[j];
+        let i = newNumber[j];
         
+
         let optionLoop =
         `<p id="choice${option [count] [newNumber[i]]}_${count+1}" class="box${count}">${option [count] [newNumber[i]]}</p>`;
         document.getElementById(`imgNext${count}`).insertAdjacentHTML('afterEnd', optionLoop);
