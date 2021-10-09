@@ -2,18 +2,7 @@ let option =[
     ["たかなわ","たかわ","こうわ"],
     ["かめいど","かめど","かめと"],
     ["こうじまち","おかとまち","かゆまち"]
-]
-
-// let asd = [];
-
-// //問題の数ループ
-// for(let abc =0;abc<option.length;abc++){
-// asd.push(abc);
-// }
-
-// const zxc = asd;
-
-// const number = zxc;
+];
 
 
 for(let count =0;count<option.length;count++){
@@ -67,7 +56,7 @@ for(let count =0;count<option.length;count++){
         
         let optionLoop =
         // `<p id="choice${option [count] [newNumber[i]]}_${count+1}" class="box${count}">${option [count] [newNumber[i]]}</p>`;
-        `<p id="choice_${count}_${i}" class="box${count}">${option [count] [newNumber[i]]}</p>`;
+        `<p id="choice_${count}_${i}" class="box">${option [count] [newNumber[i]]}</p>`;
         document.getElementById(`imgNext${count}`).insertAdjacentHTML('afterEnd', optionLoop);
     };
 
@@ -75,7 +64,6 @@ for(let count =0;count<option.length;count++){
         for(let l=0;l<option[count].length;l++){
             document.getElementById(`choice_${count}_${l}`).style.cursor = "pointer";
             document.getElementById(`choice_${count}_${l}`).style.pointerEvents = "none";
-            console.log(`choice_${count}_${l}`)
         };
     };
 console.log(document.getElementById(`choice_${count}_${0}`))
@@ -84,6 +72,7 @@ console.log(document.getElementById(`choice_${count}_${0}`))
     document.getElementById(`choice_${count}_${0}`).onclick = function(){
         document.getElementById(`ansT_${count+1}`).style.display = "block";
         document.getElementById(`ans_${count+1}`).style.display = "block";
+        
         afterPush();
         };
 
