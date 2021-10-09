@@ -1,3 +1,25 @@
 .ansT,.ansF,.ans{
     display: none;
 }
+
+body{
+    margin-left:calc(50% - 320px);
+    margin-right:calc(50% - 320px);
+}
+
+
+.box{
+    padding: 10px 0;
+    box-shadow: inset 0px -1.5px #e5e5e5;
+    border: 1px solid rgb(235,235,235);
+    width: 640px;
+    cursor: pointer;
+}
+
+img{
+    width: 640px;
+}
+
+.ansT,.ansF,.ans{
+    background-color: rgb(247, 247, 247);
+}
