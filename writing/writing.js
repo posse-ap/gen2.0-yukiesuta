@@ -5,7 +5,7 @@
         ["こうじまち","おかとまち","かゆまち"]
     ];
 // 問題を問題の数ループ
-    for(let count =0;count<option.length;count++){
+    for(let count = 0;count<option.length;count++){
         // シャッフル前の配列
             const number = [0,1,2];
         //シャッフル後の配列（選択肢をシャッフルさせる）毎回違う配列を準備するためletにする
@@ -28,7 +28,7 @@
         // HTMLの適当な位置に挿入
             document.currentScript.insertAdjacentHTML('beforebegin',classes);
         //選択肢の数ループ
-            for(let j =0;j<option[count].length;j++){
+            for(let j = 0;j<option[count].length;j++){
             //シャッフルの記述
                 while (number.length > 0) {
                     n = number.length;
@@ -46,7 +46,7 @@
             };
         //選択肢が押された後の指示は文字でおいた
             function afterPush (){
-                for(let l=0;l<option[count].length;l++){
+                for(let l = 0;l<option[count].length;l++){
                     document.getElementById(`choice_${count}_${l}`).style.cursor = "pointer";
                     document.getElementById(`choice_${count}_${l}`).style.pointerEvents = "none";
                 };
@@ -58,7 +58,7 @@
                 afterPush();
                 };
         // 不正解の選択肢が押された時のonclick
-            for(let k=0;k<2;k++){
+            for(let k = 0;k<2;k++){
                 document.getElementById(`choice_${count}_${k+1}`).onclick = function(){
                     document.getElementById(`ansF_${count+1}`).style.display = "block";
                     document.getElementById(`ans_${count+1}`).style.display = "block";
