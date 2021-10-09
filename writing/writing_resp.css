@@ -1,0 +1,8 @@
+@media screen and (max-width: 650px){
+    body{
+        margin:0 2%;
+    }
+    img,.box,.ans{
+        width: 100%;
+    }
+}
