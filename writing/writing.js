@@ -3,10 +3,32 @@ let option =[
     ["かめいど","かめど","かめと"],
     ["こうじまち","おかとまち","かゆまち"]
 ]
-//問題の数ループ
+
+// let asd = [];
+
+// //問題の数ループ
+// for(let abc =0;abc<option.length;abc++){
+// asd.push(abc);
+// }
+
+// const zxc = asd;
+
+// const number = zxc;
+
+
 for(let count =0;count<option.length;count++){
     //シャッフル前の配列 ここをうまく問題数に合わせて作ってくれるものがないかな？
+    // console.log(asd);
     const number = [0,1,2];
+
+    // console.log(zxc);
+
+    console.log(number);
+    console.log(number[0]);
+    
+
+
+    
     //シャッフル後の配列（選択肢をシャッフルさせる）毎回違う配列を準備するためletにする
     let newNumber = [];
     //本文
@@ -44,19 +66,22 @@ for(let count =0;count<option.length;count++){
         let i = newNumber[j];
         
         let optionLoop =
-        `<p id="choice${option [count] [newNumber[i]]}_${count+1}" class="box${count}">${option [count] [newNumber[i]]}</p>`;
+        // `<p id="choice${option [count] [newNumber[i]]}_${count+1}" class="box${count}">${option [count] [newNumber[i]]}</p>`;
+        `<p id="choice_${count}_${i}" class="box${count}">${option [count] [newNumber[i]]}</p>`;
         document.getElementById(`imgNext${count}`).insertAdjacentHTML('afterEnd', optionLoop);
     };
 
     function afterPush (){
         for(let l=0;l<option[count].length;l++){
-            document.getElementById(`choice${option [count] [`${l}`]}_${count+1}`).style.cursor = "pointer";
-            document.getElementById(`choice${option [count] [`${l}`]}_${count+1}`).style.pointerEvents = "none";
+            document.getElementById(`choice_${count}_${l}`).style.cursor = "pointer";
+            document.getElementById(`choice_${count}_${l}`).style.pointerEvents = "none";
+            console.log(`choice_${count}_${l}`)
         };
     };
-
+console.log(document.getElementById(`choice_${count}_${0}`))
+// console.log(document.getElementById(`choice${option [0] [0]}_${count+1}`))
     
-    document.getElementById(`choice${option [count] [0]}_${count+1}`).onclick = function(){
+    document.getElementById(`choice_${count}_${0}`).onclick = function(){
         document.getElementById(`ansT_${count+1}`).style.display = "block";
         document.getElementById(`ans_${count+1}`).style.display = "block";
         afterPush();
@@ -64,7 +89,7 @@ for(let count =0;count<option.length;count++){
 
     for(let k=0;k<2;k++){
         //上の２をoption[count].length-1で表したいけどうまくいかない
-        document.getElementById(`choice${option [count] [`${k+1}`]}_${count+1}`).onclick = function(){
+        document.getElementById(`choice_${count}_${k+1}`).onclick = function(){
             document.getElementById(`ansF_${count+1}`).style.display = "block";
             document.getElementById(`ans_${count+1}`).style.display = "block";
             afterPush();
