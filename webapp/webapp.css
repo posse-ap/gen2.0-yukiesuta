@@ -1,0 +1,16 @@
+header{
+    position: fixed;
+    background-color: white;
+    height: 64px;
+}
+.header_container{
+    display: flex;
+	align-items: center;
+}
+img{
+    width: 100px;
+    /* align-items: center; */
+}
+.asd{
+    size: 30px;
+}
