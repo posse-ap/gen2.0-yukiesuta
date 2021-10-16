@@ -24,10 +24,13 @@ header{
 }
 
 .link{
-    /* align-items: flex-end;
-    display: flex; */
-
+    width: 140px;
+    text-align: center;
+    /* background-color: rgb(169, 169, 255); */
+    border-radius: 100vh;
+    color:white;
     margin-left: auto;
+    background: linear-gradient(rgb(187, 209, 255),rgb(46, 46, 170));
 
 }
 /* メイン */
