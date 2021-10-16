@@ -1,10 +1,12 @@
 body{
     margin: 0;
+    background-color: rgb(231, 231, 231);
 }
 header{
+    top: 0;
     position: fixed;
     width: 100%;
-    background-color: gainsboro;
+    background-color: rgb(255, 255, 255);
     height: 64px;
     align-items: center;
 }
@@ -25,4 +27,15 @@ header{
 
     margin-left: auto;
 
+}
+.main{
+    margin:70px 5% 0 5%;
+}
+.hour{
+    display: flex;
+    gap: 20px;
+}
+.hour_box{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
 }
