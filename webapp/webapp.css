@@ -2,6 +2,11 @@ body{
     margin: 0;
     background-color: rgb(231, 231, 231);
 }
+
+/* ヘッダー */
+.logo{
+    height: 30px;
+}
 header{
     top: 0;
     position: fixed;
@@ -18,9 +23,6 @@ header{
     margin-top: 15px;
 }
 
-.logo{
-    height: 30px;
-}
 .link{
     /* align-items: flex-end;
     display: flex; */
@@ -28,14 +30,46 @@ header{
     margin-left: auto;
 
 }
+/* メイン */
 .main{
     margin:70px 5% 0 5%;
-}
-.hour{
     display: flex;
     gap: 20px;
 }
-.hour_box{
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-}
+    /* 左半分の記述 */
+    .left{
+        width: 45%;
+    }
+        .hour{
+            display: flex;
+            gap: 20px;
+        }
+        .hour_box{
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .period{
+            color: cornflowerblue;
+        }
+        .figure{
+            font-size: 50px;
+        }
+        .unit{
+            color: rgb(55, 82, 133);
+        }
+        .bar_graph{
+            margin-top: 20px;
+        }
+        .times1{
+            width: 100%;
+        }
+    /* 右半分の記述 */
+        .right{
+            width: 45%;
+            display: flex;
+            gap:20px;
+        }
+        .times2{
+            width: 40%;
+        }
