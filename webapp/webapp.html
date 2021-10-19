@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>posse web app</title>
     <link rel="stylesheet" href="webapp.css" />
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="header_container">
             <div><img src="img/posseLogo.png" alt="logo" class="logo"></div>
             <div class="week">4th week</div>
-            <div class="link">記録・投稿</div>
+            <div class="link" id="open">記録・投稿</div>
         </div>
     </header>
     <div class="main">
-        <div class="left">
+        <div class="left1">
             <div class="hour">
                 <div class="hour_box"><span class="period">Today</span><br><span class="figure">3</span><br><span class="unit">hour</div>
                 <div class="hour_box"><span class="period">Month</span><br><span class="figure">120</span><br><span class="unit">hour</div>
@@ -26,10 +27,63 @@
                 <img src="img/3times_die.jpg" alt="times1" class="times1">
             </div>
         </div>
-        <div class="right">
+        <div class="right1">
             <img src="img/3times_die2.jpg" alt="times2" class="times2">
             <img src="img/3times_die2.jpg" alt="times2" class="times2">
         </div>
     </div>
+    <div id="modal" class="modal">
+        <div class="modal_close" id="close">
+            <!-- <i class="fas fa-times batu"></i> -->×
+        </div>
+        <div class="modal_top">
+            <div class="left2">
+                <div class="study_day">
+                    学習日
+                    <div class="modal_date">10月27日</div>
+                </div>
+                <div class="study_contents">
+                    学習コンテンツ（複数選択可）
+                    <ul class="modal_contents">
+                        <li class="modal_contents_option"><i class="fas fa-check-circle fa-1x"></i>  N予備校</li>
+                        <li class="modal_contents_option"><i class="fas fa-check-circle fa-1x"></i>  ドットインストール</li>
+                        <li class="modal_contents_option"><i class="fas fa-check-circle fa-1x"></i>  POSSE課題</li>
+                    </ul>
+                </div>
+                <div class="study_language">
+                    学習言語（複数選択可）
+                    <ul class="modal_language">
+                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  HTML</li>
+                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  CSS</li>
+                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  javascript</li>
+                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  PHP</li>
+                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  Laravel</li>
+                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  SQL</li>
+                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  SHELL</li>
+                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  情報システム基礎知識</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right2">
+                <div class="study_time">
+                    学習時間
+                    <div class="modal_time"></div>
+                </div>
+                <div class="twitter_comment">
+                    twitter用コメント
+                    <div class="modal_comment"></div>
+                </div>
+                <div class="twitter_share">
+                    <i class="fas fa-check-circle fa-2x"></i>
+                    <div>twitterにシェアする</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal_bottom">
+            記録・投稿
+        </div>
+    </div>
+    <div class="mask" id="mask"></div>
+    <script type="text/javascript" src="webapp.js"></script>
 </body>
 </html>
