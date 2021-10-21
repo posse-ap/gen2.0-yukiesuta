@@ -14,7 +14,7 @@
         <div class="header_container">
             <div><img src="img/posseLogo.png" alt="logo" class="logo"></div>
             <div class="week">4th week</div>
-            <div class="link" id="open">記録・投稿</div>
+            <div class="link c_pointer" id="open">記録・投稿</div>
         </div>
     </header>
     <div class="main">
@@ -32,14 +32,15 @@
             <img src="img/3times_die2.jpg" alt="times2" class="times2">
             <img src="img/3times_die2.jpg" alt="times2" class="times2">
         </div>
-        <div class="link_resp" id="open_resp">記録・投稿</div>
+        <div class="link_resp c_pointer" id="open_resp"><p>記録・投稿</p></div>
     </div>
+    <div class="bottom_month">2020年 10月</div>
     <div id="modal" class="modal">
-        <div class="modal_close" id="close">
+        <div class="modal_close c_pointer" id="close">
             <!-- <i class="fas fa-times batu"></i> -->
             ×
         </div>
-        <div class="modal_top">
+        <div class="modal_top" id="m_top">
             <div class="left2">
                 <div class="study_day">
                     学習日
@@ -48,22 +49,22 @@
                 <div class="study_contents">
                     学習コンテンツ（複数選択可）
                     <ul class="modal_contents">
-                        <li class="modal_contents_option"><i class="fas fa-check-circle fa-1x"></i>  N予備校</li>
-                        <li class="modal_contents_option"><i class="fas fa-check-circle fa-1x"></i>  ドットインストール</li>
-                        <li class="modal_contents_option"><i class="fas fa-check-circle fa-1x"></i>  POSSE課題</li>
+                        <li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  N予備校</li>
+                        <li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  ドットインストール</li>
+                        <li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  POSSE課題</li>
                     </ul>
                 </div>
                 <div class="study_language">
                     学習言語（複数選択可）
                     <ul class="modal_language">
-                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  HTML</li>
-                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  CSS</li>
-                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  javascript</li>
-                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  PHP</li>
-                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  Laravel</li>
-                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  SQL</li>
-                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  SHELL</li>
-                        <li class="modal_language_option"><i class="fas fa-check-circle fa-1x"></i>  情報システム基礎知識</li>
+                        <li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  HTML</li>
+                        <li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  CSS</li>
+                        <li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  javascript</li>
+                        <li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  PHP</li>
+                        <li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  Laravel</li>
+                        <li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  SQL</li>
+                        <li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  SHELL</li>
+                        <li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  情報システム基礎知識</li>
                     </ul>
                 </div>
             </div>
@@ -82,11 +83,12 @@
                 </div>
             </div>
         </div>
-        <div class="modal_bottom" id="zxc">
+        <div class="modal_bottom c_pointer" id="posting">
             記録・投稿
         </div>
+        <div class="loading" id="loading"><i class="fas fa-spinner fa-10x"></i></div>
     </div>
-    <div class="mask" id="mask"></div>
+    <div class="mask c_pointer" id="mask"></div>
     <script type="text/javascript" src="webapp.js"></script>
 </body>
 </html>

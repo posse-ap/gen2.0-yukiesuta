@@ -5,6 +5,9 @@
   const modal_close = document.getElementById('close');
   const modal = document.getElementById('modal');
   const mask = document.getElementById('mask');
+  const post = document.getElementById('posting');
+  const load = document.getElementById('loading');
+  const m_top = document.getElementById('m_top');
 
   modal_open.addEventListener('click', function () {
 
@@ -46,3 +49,8 @@
   });
 
 
+  post.addEventListener('click',function(){
+    load.style.display = "block";
+    m_top.style.display = "none";
+    post.style.display = "none";
+  });

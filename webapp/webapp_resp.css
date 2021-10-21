@@ -1,19 +1,28 @@
-@media screen and (max-width: 700px){
-    .main,.modal_top{
+/* レスポンシブ対応 */
+@media screen and (max-width: 900px){
+    .main{
         display: grid;
-        row-gap: 20px;
+        row-gap: 10px;
+    }
+    .modal_top,.right2,.left2{
+        display: grid;
+        row-gap: 0px;
     }
     .link{
         display: none;
     }
     .link_resp{
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .left1,.right1{
         width: 100%;
     }
     .modal{
+        height: 1000px;
         width: 100%;
+        border-radius: 30px 30px 0 0;
     }
     
 
