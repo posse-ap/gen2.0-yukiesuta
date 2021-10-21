@@ -1,0 +1,20 @@
+@media screen and (max-width: 700px){
+    .main,.modal_top{
+        display: grid;
+        row-gap: 20px;
+    }
+    .link{
+        display: none;
+    }
+    .link_resp{
+        display: block;
+    }
+    .left1,.right1{
+        width: 100%;
+    }
+    .modal{
+        width: 100%;
+    }
+    
+
+}
