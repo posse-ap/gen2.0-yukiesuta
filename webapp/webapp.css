@@ -6,6 +6,10 @@
     .c_pointer{
         cursor:pointer;
     }
+    input{
+        background-color: rgb(248, 248, 248);
+        border: none;
+    }
 /* ヘッダー */
     .logo{
         height: 30px;
@@ -126,7 +130,7 @@
         }
     /* モーダルの本文 */
         .modal_top{
-            display: block;
+            display: flex;
             gap:30px;
             margin: 20px 56px;
         }
@@ -168,6 +172,7 @@
             padding: 0 7px;
             background-color: rgb(248, 248, 248);
             border-radius: 5px;
+            height: 30px;
         }
         /* 右半分の記述 */
         .right2{
