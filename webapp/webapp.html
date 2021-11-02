@@ -5,9 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>posse web app</title>
+    
     <link rel="stylesheet" href="webapp.css" />
     <link rel="stylesheet" href="webapp_resp.css" />
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+
+<!-- ?? -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
+  integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
+  crossorigin="anonymous"></script>
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body>
     <header>
@@ -17,77 +29,92 @@
             <div class="link c_pointer" id="open">記録・投稿</div>
         </div>
     </header>
-    <div class="main">
-        <div class="left1">
-            <div class="hour">
-                <div class="hour_box"><span class="period">Today</span><br><span class="figure">3</span><br><span class="unit">hour</div>
-                <div class="hour_box"><span class="period">Month</span><br><span class="figure">120</span><br><span class="unit">hour</div>
-                <div class="hour_box"><span class="period">Total</span><br><span class="figure">1348</span><br><span class="unit">hour</div>
+    <div class="all_container">
+        <div class="main">
+            <div class="left1">
+                <div class="hour">
+                    <div class="hour_box"><span class="period">Today</span><br><span class="figure">3</span><br><span class="unit">hour</div>
+                    <div class="hour_box"><span class="period">Month</span><br><span class="figure">120</span><br><span class="unit">hour</div>
+                    <div class="hour_box"><span class="period">Total</span><br><span class="figure">1348</span><br><span class="unit">hour</div>
+                </div>
+                <div class="bar_graph">
+                    <div style="height:auto;">
+                        <canvas id="mychart"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="bar_graph">
-                <img src="img/3times_die.jpg" alt="times1" class="times1">
+            <div class="right1">
+                <div class="pie_graph1 pie">
+                    <div style=" height:150px">
+                        <canvas id="yourchart"></canvas>
+                        <br>ここに凡例を入力
+                    </div>
+                </div>
+                <div class="pie_graph2 pie">
+                    <div style=" height:150px">
+                        <canvas id="hischart"></canvas>
+                        <br>ここに凡例を入力
+                    </div>
+                </div>
             </div>
+            <div class="link_resp c_pointer" id="open_resp"><p>記録・投稿</p></div>
         </div>
-        <div class="right1">
-            <img src="img/3times_die2.jpg" alt="times2" class="times2">
-            <img src="img/3times_die2.jpg" alt="times2" class="times2">
+        <div class="bottom_month">2020年 10月</div>
+        <div id="modal" class="modal">
+            <div class="modal_close c_pointer" id="close">
+                ×
+            </div>
+            <div class="modal_top" id="m_top">
+                <div class="left2">
+                    <div class="study_day">
+                        <dt>学習日</dt>
+                        <dd><input type="date"></dd>
+                        <!-- <input type="text" name="datepicker" id="js-datepicker"> -->
+                    </div>
+                    <div class="study_contents">
+                        <dt>学習コンテンツ（複数選択可）</dt>
+                        <ul class="modal_contents">
+                            <dd><li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  N予備校</li></dd>
+                            <dd><li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  ドットインストール</li></dd>
+                            <dd><li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  POSSE課題</li></dd>
+                        </ul>
+                    </div>
+                    <div class="study_language">
+                        <dt>学習言語（複数選択可）</dt>
+                        <ul class="modal_language">
+                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  HTML</li></dd>
+                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  CSS</li></dd>
+                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  javascript</li></dd>
+                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  PHP</li></dd>
+                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  Laravel</li></dd>
+                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  SQL</li></dd>
+                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  SHELL</li></dd>
+                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  情報システム基礎知識</li></dd>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right2">
+                    <div class="study_time">
+                        <dt><label for="name">学習時間</label></dt>
+                        <dd><input id="name" type="text"></dd>
+                    </div>
+                    <div class="twitter_comment">
+                        <dt><label for="name">twitter用コメント</label></dt>
+                        <dd><input id="name" type="text"></dd>
+                    </div>
+                    <div class="twitter_share">
+                        <i class="fas fa-check-circle fa-2x"></i>
+                        <div>twitterにシェアする</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal_bottom c_pointer" id="posting">
+                記録・投稿
+            </div>
+            <div class="loading" id="loading"><i class="fas fa-spinner fa-10x"></i></div>
         </div>
-        <div class="link_resp c_pointer" id="open_resp"><p>記録・投稿</p></div>
+        <div class="mask c_pointer" id="mask"></div>
     </div>
-    <div class="bottom_month">2020年 10月</div>
-    <div id="modal" class="modal">
-        <div class="modal_close c_pointer" id="close">
-            ×
-        </div>
-        <div class="modal_top" id="m_top">
-            <div class="left2">
-                <div class="study_day">
-                    <dt>学習日</dt>
-                    <dd><input type="date"></dd>
-                </div>
-                <div class="study_contents">
-                    <dt>学習コンテンツ（複数選択可）</dt>
-                    <ul class="modal_contents">
-                        <dd><li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  N予備校</li></dd>
-                        <dd><li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  ドットインストール</li></dd>
-                        <dd><li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  POSSE課題</li></dd>
-                    </ul>
-                </div>
-                <div class="study_language">
-                    <dt>学習言語（複数選択可）</dt>
-                    <ul class="modal_language">
-                        <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  HTML</li></dd>
-                        <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  CSS</li></dd>
-                        <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  javascript</li></dd>
-                        <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  PHP</li></dd>
-                        <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  Laravel</li></dd>
-                        <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  SQL</li></dd>
-                        <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  SHELL</li></dd>
-                        <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  情報システム基礎知識</li></dd>
-                    </ul>
-                </div>
-            </div>
-            <div class="right2">
-                <div class="study_time">
-                    <dt><label for="name">学習時間</label></dt>
-                    <dd><input id="name" type="text"></dd>
-                </div>
-                <div class="twitter_comment">
-                    <dt><label for="name">twitter用コメント</label></dt>
-                    <dd><input id="name" type="text"></dd>
-                </div>
-                <div class="twitter_share">
-                    <i class="fas fa-check-circle fa-2x"></i>
-                    <div>twitterにシェアする</div>
-                </div>
-            </div>
-        </div>
-        <div class="modal_bottom c_pointer" id="posting">
-            記録・投稿
-        </div>
-        <div class="loading" id="loading"><i class="fas fa-spinner fa-10x"></i></div>
-    </div>
-    <div class="mask c_pointer" id="mask"></div>
     <script type="text/javascript" src="webapp.js"></script>
 </body>
 </html>
