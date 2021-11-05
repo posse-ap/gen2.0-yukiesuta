@@ -53,7 +53,6 @@
         gap: 20px;
     }
     .link_resp{ 
-
         height: 40px;
         width: 90%;
         text-align: center;
@@ -68,7 +67,6 @@
         margin: auto;
         /* align-items: center; */
         text-align: center;
-
     }
     /* 棒グラフ */
     .bar_graph{
@@ -82,7 +80,7 @@
     /* 円グラフ */
     .pie{
         border-radius: 10px;
-        width: 50%;
+        width: 48%;
         background-color: rgb(255, 255, 255);
     }
     .aaa{
@@ -249,7 +247,3 @@
             margin: 100px auto;
             width: 170px;
         }
-    
-
-
-        

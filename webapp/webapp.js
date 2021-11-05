@@ -65,7 +65,6 @@ var ctx2 = document.getElementById("yourchart");
 var yourChart = new Chart(ctx2, {
   type: "doughnut",
   data: {
-    labels: ["Red", "Green", "Blue"],
     datasets: [
       {
         data: [10, 20, 30],
@@ -84,7 +83,6 @@ var ctx3 = document.getElementById("hischart");
 var yourChart = new Chart(ctx3, {
   type: "doughnut",
   data: {
-    labels: ["Red", "Green", "Blue"],
     datasets: [
       {
         data: [10, 20, 30],
@@ -97,3 +95,89 @@ var yourChart = new Chart(ctx3, {
     maintainAspectRatio: false,
   },
 });
+
+
+
+
+// ライブラリのロード
+// name:visualization(可視化),version:バージョン(1),packages:パッケージ(corechart)
+google.load('visualization', '1', {'packages':['corechart']});     
+
+// グラフを描画する為のコールバック関数を指定
+google.setOnLoadCallback(drawChart);
+
+
+
+
+
+window.addEventListener('DOMContentLoaded', function(){
+  window.addEventListener('resize', function(){
+    
+  });
+});
+
+// グラフの描画   
+function drawChart() {         
+      
+  // 配列からデータの生成
+  var data = google.visualization.arrayToDataTable([
+    ['日付', 'データ'],
+    ['',  16.08 ],
+    ['2',  14.99 ],            
+    ['',  4],
+    ['4',  12.98 ], 
+    ['',  13.48 ],
+    ['6',  13.99 ],
+    ['',  15.53 ],
+    ['8',  16.08 ],
+    ['',  14.99 ],            
+    ['10',  4],
+    ['',  12.98 ], 
+    ['12',  13.48 ],
+    ['',  13.99 ],
+    ['14',  15.53 ],
+    ['',  16.08 ],
+    ['16',  14.99 ],            
+    ['',  4],
+    ['18',  12.98 ], 
+    ['',  13.48 ],
+    ['20',  13.99 ],
+    ['',  15.53 ],
+    ['22',  16.08 ],
+    ['',  14.99 ],            
+    ['24',  4],
+    ['',  12.98 ], 
+    ['26',  13.48 ],
+    ['',  13.99 ],
+    ['28',  15.53 ],
+    ['',  16.08 ],
+    ['30',  14.99 ]
+  ]);      
+
+  // 指定されたIDの要素に棒グラフを作成
+  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+  // グラフの描画
+  chart.draw(data,options);
+}
+
+ 
+  
+  let options = {
+    
+    
+    legend: {position: 'none'},
+
+    vAxis: {
+      format:'#h',
+    },
+
+
+
+  }
+
+  window.onresize = function(){
+    
+    drawChart();
+    
+  }
