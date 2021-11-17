@@ -21,6 +21,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 
 <script src="https://www.google.com/jsapi"></script>
 
@@ -43,21 +45,22 @@
                     <div class="hour_box"><span class="period">Total</span><br><span class="figure">1348</span><br><span class="unit">hour</div>
                 </div>
                 <div class="bar_graph">
-                        <div id="chart_div"></div>
+                    <div id="chart_div"></div>
+                    
                 </div>
             </div>
             <div class="right1">
-                <div class="pie_graph1 pie">
-                    <div style=" height:150px">
+                <div  class="pie" id="piechart" >
+                    <!-- <div style=" height:150px">
                         <canvas id="yourchart"></canvas>
                         <br>ここに凡例を入力
-                    </div>
+                    </div> -->
                 </div>
-                <div class="pie_graph2 pie">
-                    <div style=" height:150px">
+                <div class="pie" id="pie_graph2">
+                    <!-- <div style=" height:150px">
                         <canvas id="hischart"></canvas>
                         <br>ここに凡例を入力
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="link_resp c_pointer" id="open_resp"><p>記録・投稿</p></div>
@@ -77,22 +80,22 @@
                     <div class="study_contents">
                         <dt>学習コンテンツ（複数選択可）</dt>
                         <ul class="modal_contents">
-                            <dd><li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  N予備校</li></dd>
-                            <dd><li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  ドットインストール</li></dd>
-                            <dd><li class="modal_contents_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  POSSE課題</li></dd>
+                            <dd><li class="modal_contents_option c_pointer"><input type="checkbox" id="check" name="check" value="" />   N予備校</li></dd>
+                            <dd><li class="modal_contents_option c_pointer"><input type="checkbox" id="check" name="check" value="" />   ドットインストール</li></dd>
+                            <dd><li class="modal_contents_option c_pointer"><input type="checkbox" id="check" name="check" value="" />   POSSE課題</li></dd>
                         </ul>
                     </div>
                     <div class="study_language">
                         <dt>学習言語（複数選択可）</dt>
                         <ul class="modal_language">
-                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  HTML</li></dd>
-                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  CSS</li></dd>
-                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  javascript</li></dd>
-                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  PHP</li></dd>
-                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  Laravel</li></dd>
-                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  SQL</li></dd>
-                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  SHELL</li></dd>
-                            <dd><li class="modal_language_option c_pointer"><i class="fas fa-check-circle fa-1x"></i>  情報システム基礎知識</li></dd>
+                            <dd><li class="modal_language_option c_pointer"> <input type="checkbox" id="check" name="check" value="" />  HTML</li></dd>
+                            <dd><li class="modal_language_option c_pointer">  <input type="checkbox" id="check" name="check" value="" /> CSS</li></dd>
+                            <dd><li class="modal_language_option c_pointer"> <input type="checkbox" id="check" name="check" value="" />  javascript</li></dd>
+                            <dd><li class="modal_language_option c_pointer"> <input type="checkbox" id="check" name="check" value="" />  PHP</li></dd>
+                            <dd><li class="modal_language_option c_pointer">  <input type="checkbox" id="check" name="check" value="" /> Laravel</li></dd>
+                            <dd><li class="modal_language_option c_pointer">  <input type="checkbox" id="check" name="check" value="" /> SQL</li></dd>
+                            <dd><li class="modal_language_option c_pointer">  <input type="checkbox" id="check" name="check" value="" /> SHELL</li></dd>
+                            <dd><li class="modal_language_option c_pointer">  <input type="checkbox" id="check" name="check" value="" /> 情報システム基礎知識</li></dd>
                         </ul>
                     </div>
                 </div>
@@ -106,8 +109,9 @@
                         <dd><input id="name" type="text"></dd>
                     </div>
                     <div class="twitter_share">
-                        <i class="fas fa-check-circle fa-2x"></i>
+                        <input type="checkbox" id="check" name="check" value="" /> 
                         <div>twitterにシェアする</div>
+                        
                     </div>
                 </div>
             </div>

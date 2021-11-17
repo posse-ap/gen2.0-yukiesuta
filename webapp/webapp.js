@@ -1,14 +1,4 @@
 "use strict";
-
-// import flatpickr from 'flatpickr/dist/flatpickr.min.js';
-// import { Japanese } from "flatpickr/dist/l10n/ja.js" //日本語用モジュール
-
-// flatpickr('#js-datepicker', {
-//     locale : Japanese, // 日本語用モジュールを適用
-//     dateFormat : 'Y.m.d（D）', // 2021.05.24（月）の形式で表示
-//     defaultDate : new Date() // 入力エリアの初期値
-//   });
-
 const modal_open = document.getElementById("open");
 const modal_open_resp = document.getElementById("open_resp");
 const modal_close = document.getElementById("close");
@@ -37,10 +27,6 @@ modal_open_resp.addEventListener("click", function () {
   modal.style.display = "block";
   mask.style.display = "block";
   body.style.display = "none";
-
-  // document.getElementsByClassName('modal').style.display = "block";
-  // console.log(document.getElementsByClassName('modal').style.display = "block");
-  // mask.classList.remove('hidden');
 });
 
 modal_close.addEventListener("click", function () {
@@ -60,47 +46,34 @@ post.addEventListener("click", function () {
 });
 
 
-var ctx2 = document.getElementById("yourchart");
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
-var yourChart = new Chart(ctx2, {
-  type: "doughnut",
-  data: {
-    datasets: [
-      {
-        data: [10, 20, 30],
-        backgroundColor: ["#f88", "#484", "#48f"],
-        weight: 100,
-      },
-    ],
-  },
-  options: {
-    maintainAspectRatio: false,
-  },
-});
+function drawChart() {
 
-var ctx3 = document.getElementById("hischart");
+  var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Work',     11],
+    ['Eat',      2],
+    ['Commute',  2],
+    ['Watch TV', 2],
+    ['Sleep',    7]
+  ]);
 
-var yourChart = new Chart(ctx3, {
-  type: "doughnut",
-  data: {
-    datasets: [
-      {
-        data: [10, 20, 30],
-        backgroundColor: ["#f88", "#484", "#48f"],
-        weight: 100,
-      },
-    ],
-  },
-  options: {
-    maintainAspectRatio: false,
-  },
-});
+  var options = {
+    title: 'My Daily Activities'
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+  chart.draw(data, options);
+}
+
 
 
 
 
 // ライブラリのロード
-// name:visualization(可視化),version:バージョン(1),packages:パッケージ(corechart)
 google.load('visualization', '1', {'packages':['corechart']});     
 
 // グラフを描画する為のコールバック関数を指定
@@ -181,3 +154,15 @@ function drawChart() {
     drawChart();
     
   }
+
+  const textBox = document.getElementById("name")
+  const value = textBox.value
+  const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
+
+  console.log(document.getElementById("name").value);
+
+  document.getElementById("posting").onclick = function(){
+    // window.location.href = tweetUrl;
+    console.log(document.getElementById("name").value);
+    console.log(value)
+  };

@@ -32,7 +32,7 @@
         z-index: 5;
     }
     .header_container{
-        margin: 0 5% 0 5%;
+        /* margin: 0 5% 0 5%; */
         display: flex;
         gap: 30px;
         align-items: center;
@@ -43,7 +43,7 @@
         text-align: center;
         border-radius: 100vh;
         color:white;
-        margin-left: auto;
+        /* margin-left: auto; */
         background: linear-gradient(rgb(187, 209, 255),rgb(46, 46, 170));
     }
 /* メイン */
@@ -80,7 +80,7 @@
     /* 円グラフ */
     .pie{
         border-radius: 10px;
-        width: 48%;
+        width: 100%;
         background-color: rgb(255, 255, 255);
     }
     .aaa{
@@ -247,3 +247,6 @@
             margin: 100px auto;
             width: 170px;
         }
+
+
+        
