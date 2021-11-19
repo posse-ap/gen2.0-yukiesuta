@@ -150,19 +150,25 @@ function drawChart() {
   }
 
   window.onresize = function(){
-    
+
     drawChart();
     
   }
 
   const textBox = document.getElementById("name")
   const value = textBox.value
-  const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
-
+  
+  const asd = "aaa";
+  const tweetUrl = "https://twitter.com/intent/tweet?text=" + asd;
+  
+  console.log(tweetUrl)
   console.log(document.getElementById("name").value);
 
   document.getElementById("posting").onclick = function(){
-    // window.location.href = tweetUrl;
-    console.log(document.getElementById("name").value);
+    const textbox = document.getElementById("name2")
+    const value = textbox.value
     console.log(value)
+    const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
+    console.log(tweetUrl)
+    window.location = tweetUrl
   };
