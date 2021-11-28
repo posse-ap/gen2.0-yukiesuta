@@ -16,22 +16,24 @@ modal_open.addEventListener("click", function () {
 modal_close.addEventListener("click", function () {
   modal.style.display = "none";
   mask.style.display = "none";
+  load.style.display = "none";
 });
 
-mask.addEventListener("click", function () {
-  modal.style.display = "none";
-  mask.style.display = "none";
-});
+// mask.addEventListener("click", function () {
+//   modal.style.display = "none";
+//   mask.style.display = "none";
+// });
 
 modal_open_resp.addEventListener("click", function () {
   modal.style.display = "block";
   mask.style.display = "block";
-  body.style.display = "none";
+  load.style.display = "none";
 });
 
 modal_close.addEventListener("click", function () {
   modal.style.display = "none";
   mask.style.display = "none";
+  load.style.display = "none";
 });
 
 mask.addEventListener("click", function () {
@@ -43,6 +45,17 @@ post.addEventListener("click", function () {
   load.style.display = "block";
   m_top.style.display = "none";
   post.style.display = "none";
+  const textbox = document.getElementById("name2")
+    const value = textbox.value
+    console.log(value)
+    const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
+    console.log(tweetUrl)
+
+    if (document.getElementById('check').checked){
+      setTimeout('open(tweetUrl);', 2000);
+    }else{
+      console.log("ツイートしない");
+    }
 });
 
 
@@ -133,26 +146,70 @@ function drawChart() {
   // グラフの描画
   chart.draw(data,options);
 }
-
- 
   
   let options = {
-    
-    
     legend: {position: 'none'},
 
     vAxis: {
       format:'#h',
     },
-
-
-
+      height: 600, 
+    
   }
 
-  window.onresize = function(){
+  //円グラフ
+  var ctx = document.getElementById("myDoughnutChart1");
+  var myDoughnutChart= new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ["賛成", "反対", "わからない", "未回答"], //データ項目のラベル
+      datasets: [{
+          backgroundColor: [
+              "#c97586",
+              "#bbbcde",
+              "#93b881",
+              "#e6b422"
+          ],
+          data: [45, 32, 18, 5] //グラフのデータ
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        //グラフタイトル
+        text: '新法案賛否'
+      }
+    }
+  });
+  var ctx = document.getElementById("myDoughnutChart2");
+  var myDoughnutChart= new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ["賛成", "反対", "わからない", "未回答"], //データ項目のラベル
+      datasets: [{
+          backgroundColor: [
+              "#c97586",
+              "#bbbcde",
+              "#93b881",
+              "#e6b422"
+          ],
+          data: [45, 32, 18, 5] //グラフのデータ
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        //グラフタイトル
+        text: '新法案賛否'
+      }
+    }
+  });
+  
 
+
+
+  window.onresize = function(){
     drawChart();
-    
   }
 
   const textBox = document.getElementById("name")
@@ -165,10 +222,15 @@ function drawChart() {
   console.log(document.getElementById("name").value);
 
   document.getElementById("posting").onclick = function(){
-    const textbox = document.getElementById("name2")
-    const value = textbox.value
-    console.log(value)
-    const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
-    console.log(tweetUrl)
-    window.location = tweetUrl
+    // const textbox = document.getElementById("name2")
+    // const value = textbox.value
+    // console.log(value)
+    // const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
+    // console.log(tweetUrl)
+
+    // if (document.getElementById('check').checked) {
+    //   window.location = tweetUrl;
+    // }else{
+    //   console.log(value);
+    // }
   };
