@@ -1,5 +1,3 @@
-<!-- 名前index.phpにした方がいい？？？？ -->
-
 <!DOCTYPE html>
 <html lang="jp">
   <head>
