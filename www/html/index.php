@@ -8,7 +8,7 @@ $user = 'yukiho';
   // データベースのパスワード
 $password = 'password';
 
-echo phpinfo();
+// echo phpinfo();
  
 // tryにPDOの処理を記述
 try {

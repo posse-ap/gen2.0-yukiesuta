@@ -40,6 +40,12 @@ services:
       MYSQL_USER: yukiho
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: secret
+    platform: linux/x86_64 # M1チップ対応のため追記
+
+    # db:
+    # platform: linux/x86_64 # M1チップ対応のため追記
+    # image: mysql:5.7
+    # container_name: app_db
 
 # # mysqlを便利にする
 #   phpmyadmin:
