@@ -1,24 +1,46 @@
 DROP TABLE IF EXISTS questions;
 
 -- ここからテーブルをかく記述
-CREATE TABLE questions (
-big_question_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-question_title VARCHAR(225) NOT NULL
+
+-- big_questionsテーブル
+DROP TABLE IF EXISTS `big_questions`;
+CREATE TABLE big_questions (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+name VARCHAR(225) NOT NULL
 );
-INSERT INTO questions (question_title) VALUES
-('東京'),
-('広島');
+INSERT INTO big_questions (name) VALUES
+('東京の難読地名クイズ'),
+('広島の難読地名クイズ');
 
 -- 別のテーブルも作れる テーブルは一つにまとめる、全体スケジュール参照
+
+-- 選択肢テーブル
+DROP TABLE IF EXISTS `choices`;
 CREATE TABLE choices (
-choices_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-choice1 VARCHAR(225) NOT NULL,
-choice2 VARCHAR(225) NOT NULL,
-choice3 VARCHAR(225) NOT NULL
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+question_id  INT NOT NULL,
+name VARCHAR(225) NOT NULL,
+valid INT NOT NULL
 );
-INSERT INTO choices (choice1,choice2,choice3) VALUES
-('たかなわ','たかわ','こうわ'),
-('かめいど','かめど','かめと');
+INSERT INTO choices (question_id,name,valid) VALUES
+(1,'たかなわ',1),
+(1,'たかわ',0),
+(1,'こうわ',0),
+(2,'かめいど',1),
+(2,'かめど',0),
+(3,'かめと',0);
+
+-- これなんのテーブル？？？？
+DROP TABLE IF EXISTS `questions`;
+CREATE TABLE questions (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+big_question_id  INT NOT NULL,
+image VARCHAR(225) NOT NULL
+);
+INSERT INTO questions (big_question_id,image) VALUES
+(1,'takanawa.png'),
+(1,'kameido.png'),
+(2,'mukainada.png');
 
 
 -- -- 広島

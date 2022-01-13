@@ -10,6 +10,7 @@ $password = 'password';
 try {
   // PDOインスタンスを生成
   $dbh = new PDO($dsn, $user, $password);
+  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   echo 'データベースにアクセスしました！' ;
 // エラー（例外）が発生した時の処理を記述
 } catch (PDOException $e) {
@@ -19,18 +20,48 @@ try {
   exit;
 }
 
+
+  // $choices_value =  "SELECT * FROM choices";
+  // $choices = $dbh->query($choices_value)->fetch();
+
+  // var_dump($choices);
+
+  // $sql = 'SELECT * FROM big_questions';
+  // $Titles = $dbh->prepare($sql);
+  // // $stmt->bindValue(':name', '花子');
+  // $Titles->execute();
+  // echo $Titles;
+
+
+
 // 東京or広島
   // prepare:ただ文章（変数込みのsql文を用意する ：の後に後で代入する
-  $Title = $dbh->prepare('SELECT * FROM questions WHERE big_question_id = :big_question_id');
-  // execute()が代入を実行（データベースから分取ってくる）する、引数に配列を入れる
-  $Title->execute(array(':big_question_id'=>$_REQUEST['big_question_id']));
-  // fetchは1行目だけを取ってくる（配列１こ）、fetchAllは全部取ってくる（二次元配列）
-  $Titles = $Title->fetch();
+  // $Titles = $dbh->prepare('SELECT * FROM big_questions WHERE name = ?');
+  // // execute()が代入を実行（データベースから分取ってくる）する、引数に配列を入れる
+  // // $Titles->execute(array($Titles));
+  // $Titles = $Titles->execute();
+  // // fetchは1行目だけを取ってくる（配列１こ）、fetchAllは全部取ってくる（二次元配列）
+  // $Title = $Titles->fetch();
 
-// 東京の選択肢
-$tokyo_choice = $dbh->prepare('SELECT * FROM tokyo_choices WHERE tokyo_choices_id = :tokyo_choices_id');
-$tokyo_choice->execute(array('tokyo_choices_id'=>$_REQUEST['tokyo_choices_id']));
-$tokyo_choices = $tokyo_choice->fetch();
+  // var_dump($Title);
+
+
+
+  $stmt = $dbh->query('SELECT * FROM big_questions');
+
+  // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+  var_dump($result);
+
+  $dbh = null;
+
+  // // foreach文で配列の中身を一行ずつ出力
+  // foreach ($result as $result_value) {
+    
+  //   // データベースのフィールド名で出力
+  //   echo $result_value;
+  // }
 
 
 ?>
@@ -48,15 +79,15 @@ $tokyo_choices = $tokyo_choice->fetch();
       <div class="contain">
         繰り返し表示される文章
       </div>
-      <?php } ?>
-
-      <?php print_r($tokyo_choices) ?>
+      <?php 
+      foreach ($result as  $$result_value) {
+        echo $result_value['name'];
+      }
+    } 
+    ?>
       
-      <?php  print_r($Titles) ?>
       
       <h3>ガチで
-        <?= $Titles[1] ?>
-        <?= $tokyo_choices[1] ?>
         の人しか解けない！ #
         <?php echo htmlspecialchars($_GET["big_question_id"]);?>
         </h3>
