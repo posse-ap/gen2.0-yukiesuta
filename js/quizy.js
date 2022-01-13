@@ -29,7 +29,7 @@ box1 = [
 for(let count =0;count<10;count++){
 
     //シャッフル前の配列
-        const　number = [0,1,2];
+        const number = [0,1,2];
     //シャッフル後の配列（選択肢をシャッフルさせる）
         const newNumber = [];
     //シャッフルの記述
