@@ -33,7 +33,6 @@ try {
   // echo $Titles;
 
 
-
 // 東京or広島
   // prepare:ただ文章（変数込みのsql文を用意する ：の後に後で代入する
   // $Titles = $dbh->prepare('SELECT * FROM big_questions WHERE name = ?');
@@ -46,13 +45,18 @@ try {
   // var_dump($Title);
 
 
+  $id = $_GET["id"];
 
-  $stmt = $dbh->query('SELECT * FROM big_questions');
+  echo($id);//urlのidの値をecho
+  
+  $stmt = $dbh->query("SELECT * FROM big_questions WHERE id = $id " );
 
   // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
-  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+  print_r($result);
   
-  var_dump($result);
 
   $dbh = null;
 
@@ -85,16 +89,15 @@ try {
       
       
       <h3>ガチで
+        <!-- <?php echo htmlspecialchars($_GET["id"]) ;?> -->
+
         の人しか解けない！ #
 
         
 
-        <?= print_r($result); ?>
-        break
-        <?= print_r($result[1]["id"]); ?>
-        break
-        <?= $result[0]["id"]; ?>
-        </h3>
+        <!-- <?= print_r($result[0]["name"]); ?> -->
+        <?=$result["name"]?>
+        
     <script type="text/javascript" src="/js/quizy.js"></script>
   </body>
 </html>
