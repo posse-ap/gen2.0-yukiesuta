@@ -77,19 +77,23 @@ try {
   <body>
     <?php for ($i=0; $i < 3; $i++) { ?>
       <div class="contain">
-        繰り返し表示される文章
+      繰り返し表示される文章
       </div>
       <?php 
-      foreach ($result as  $$result_value) {
-        echo $result_value['name'];
-      }
     } 
     ?>
       
       
       <h3>ガチで
         の人しか解けない！ #
-        <?php echo htmlspecialchars($_GET["big_question_id"]);?>
+
+        
+
+        <?= print_r($result); ?>
+        break
+        <?= print_r($result[1]["id"]); ?>
+        break
+        <?= $result[0]["id"]; ?>
         </h3>
     <script type="text/javascript" src="/js/quizy.js"></script>
   </body>
