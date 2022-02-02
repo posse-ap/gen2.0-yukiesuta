@@ -164,7 +164,7 @@
         /* 左半分の記述 */
         .modal_first_container{
             flex: 1;
-            display: grid;
+            /* display: grid; */
             row-gap: 20px;
         }
         ul{
@@ -224,6 +224,7 @@
         }
         /* モーダルの下の部分 */
         .modal_bottom{
+            z-index: 100000;
             width: 200px;
             text-align: center;
             padding: 5px;
@@ -245,19 +246,48 @@
         }
     /* ロード画面 */
         .loading{
+            font-size: 40px;
+            /* background-color: rgb(255, 255, 255); */
+            position: absolute;
             display: none;
-            z-index: 3;
-            margin:100px auto;
-            width: 100px;
-            animation:3s linear infinite rotation1;
+            /* text-align: center; */
+            z-index: 1000000;
+            /* margin:200px auto; */
+            /* height: 300px; */
+            /* width: 100%; */
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+            /* z-index: 8; */
+            background: rgb(255, 255, 255);
+            color: rgb(100, 152, 230);
+            border-radius: 30px;
+            /* position: absolute; */
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            /* height: 40px; */
+            /* align-items: center; */
+            /* vertical-align: center; */
+            /* width: auto; */
+            /* margin-top: 10px; */
+            /* line-height: 35px; */
+            /* display: none; */
+            /* animation:3s linear infinite rotation1; */
         }
-        .loading_circle{
+        .loading_stmt{
+            margin: auto;
+            width: auto;
+            height: auto;
+            text-align: center;
+            align-items: center;
+        }
+        /* .loading_circle{
 width: 100px;
 height: 100px;
-        }
+        } */
 @keyframes rotation1{
             0%{ transform:rotate(0);}
             100%{ transform:rotate(1080deg); }
         }
-
-        

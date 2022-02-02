@@ -8,55 +8,77 @@ const post = document.getElementById("posting");
 const load = document.getElementById("loading");
 const m_top = document.getElementById("m_top");
 
-modal_open.addEventListener("click", function () {
-  modal.style.display = "block";
-  mask.style.display = "block";
-});
+// modal_open.addEventListener("click", function () {
+  // });
+  
+  function showModal(){
+    modal.style.display = "block";
+    mask.style.display = "block";
+  }
+  
+  function modalClose(){
+    modal.style.display = "none";
+    mask.style.display = "none";
+    load.style.display = "none";
+  }
+  
+  // post.addEventListener("click", function () {
+    
+    // load.style.display = "block";
+  //   // m_top.style.display = "none";
+  //   // post.style.display = "none";
+    
+  //   const textbox = document.getElementById("name2")
+  //   const value = textbox.value
+  //   console.log(value)
+  //   const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
+  //   console.log(tweetUrl)
+    
+  //   if (document.getElementById('check').checked){
+  //     setTimeout('open(tweetUrl),modalClose()', 2000);
+      
+  //   }else{
+  //     console.log("ツイートしない");
+  //     modalClose();
+  //   }
+  // });
+  
+  
+  
+  
+  
+    // const textBox = document.getElementById("name")
+    // const value = textBox.value
+    
+    // const asd = "aaa";
+    // const tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(value);
+    
+    // console.log(tweetUrl)
+    // console.log(document.getElementById("name").value);
+  
+  
+  
+  
+    document.getElementById("posting").onclick = function(){
+      const textbox = document.getElementById("name2")
+      const value = textbox.value
 
-modal_close.addEventListener("click", function () {
-  modal.style.display = "none";
-  mask.style.display = "none";
-  load.style.display = "none";
-});
+      const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
+      console.log(tweetUrl)
 
-// mask.addEventListener("click", function () {
-//   modal.style.display = "none";
-//   mask.style.display = "none";
-// });
+      function tweetChecked(){
+        open(tweetUrl);
+        load.style.display = "none";
+      }
+  
+      if (document.getElementById('check').checked) {
+        load.style.display = "block";
+        setTimeout(function(){tweetChecked()},2000);
+      }else{
+        console.log(value);
+      }
+    };
 
-modal_open_resp.addEventListener("click", function () {
-  modal.style.display = "block";
-  mask.style.display = "block";
-  load.style.display = "none";
-});
-
-modal_close.addEventListener("click", function () {
-  modal.style.display = "none";
-  mask.style.display = "none";
-  load.style.display = "none";
-});
-
-mask.addEventListener("click", function () {
-  modal.style.display = "none";
-  mask.style.display = "none";
-});
-
-post.addEventListener("click", function () {
-  load.style.display = "block";
-  m_top.style.display = "none";
-  post.style.display = "none";
-  const textbox = document.getElementById("name2")
-    const value = textbox.value
-    console.log(value)
-    const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
-    console.log(tweetUrl)
-
-    if (document.getElementById('check').checked){
-      setTimeout('open(tweetUrl);', 2000);
-    }else{
-      console.log("ツイートしない");
-    }
-});
 
 
 google.charts.load('current', {'packages':['corechart']});
@@ -211,26 +233,3 @@ function drawChart() {
   window.onresize = function(){
     drawChart();
   }
-
-  const textBox = document.getElementById("name")
-  const value = textBox.value
-  
-  const asd = "aaa";
-  const tweetUrl = "https://twitter.com/intent/tweet?text=" + asd;
-  
-  console.log(tweetUrl)
-  console.log(document.getElementById("name").value);
-
-  document.getElementById("posting").onclick = function(){
-    // const textbox = document.getElementById("name2")
-    // const value = textbox.value
-    // console.log(value)
-    // const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
-    // console.log(tweetUrl)
-
-    // if (document.getElementById('check').checked) {
-    //   window.location = tweetUrl;
-    // }else{
-    //   console.log(value);
-    // }
-  };
