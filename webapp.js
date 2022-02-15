@@ -179,57 +179,206 @@ function drawChart() {
     
   }
 
-  //円グラフ
-  var ctx = document.getElementById("myDoughnutChart1");
-  var myDoughnutChart= new Chart(ctx, {
+  
+var dataLabelPlugin = {
+  afterDatasetsDraw: function (chart, easing) {
+      // To only draw at the end of animation, check for easing === 1
+      var ctx = chart.ctx;
+
+      chart.data.datasets.forEach(function (dataset, i) {
+          var dataSum = 0;
+          dataset.data.forEach(function (element){
+              dataSum += element;
+          });
+
+          var meta = chart.getDatasetMeta(i);
+          if (!meta.hidden) {
+              meta.data.forEach(function (element, index) {
+                  // Draw the text in black, with the specified font
+                  ctx.fillStyle = 'rgb(255, 255, 255)';
+
+                  var fontSize = 12;
+                  var fontStyle = 'normal';
+                  var fontFamily = 'Helvetica Neue';
+                  ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+
+                  // Just naively convert to string for now
+                  var labelString = chart.data.labels[index];
+                  var dataString = (Math.round(dataset.data[index] / dataSum * 1000)/10).toString() + "%";
+
+                  // Make sure alignment settings are correct
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'middle';
+
+                  var padding = 5;
+                  var position = element.tooltipPosition();
+                  // ctx.fillText(labelString, position.x, position.y - (fontSize / 2) - padding);
+                  ctx.fillText(dataString, position.x, position.y + (fontSize / 2) - padding);
+              });
+          }
+      });
+  }
+};
+
+
+  var ctx = document.getElementById("sircleGrafLanguages1");
+  var sircleGrafLanguages= new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ["賛成", "反対", "わからない", "未回答"], //データ項目のラベル
+      labels: ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "SQL", "SHELL", "その他"], //データ項目のラベル
       datasets: [{
-          backgroundColor: [
-              "#c97586",
-              "#bbbcde",
-              "#93b881",
-              "#e6b422"
-          ],
-          data: [45, 32, 18, 5] //グラフのデータ
+        backgroundColor: [
+          "#65ccf9",
+          "#2d72b8",
+          "#204be3",
+          "#55bbda",
+          "#aea1ee",
+          "#654fe4",
+          "#412ce5",
+          "#291db9"
+        ],
+        data: [30, 20, 10, 5, 20, 20, 10] //グラフのデータ
       }]
     },
     options: {
-      title: {
-        display: true,
-        //グラフタイトル
-        text: '新法案賛否'
+      legend: {position: 'bottom'},
+      maintainAspectRatio: false,
+      responsive: true,
+      layout: { //レイアウトの設定
+        padding: {
+          left: 30,
+          right: 30,
+          top: 0,
+          bottom: 50
+        }
       }
-    }
+    },
+    plugins: [dataLabelPlugin],
   });
-  var ctx = document.getElementById("myDoughnutChart2");
-  var myDoughnutChart= new Chart(ctx, {
+
+  var ctx = document.getElementById("sircleGrafLanguages2");
+  var sircleGrafLanguages= new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ["賛成", "反対", "わからない", "未回答"], //データ項目のラベル
+      labels: ["N予備校", "ドットインストール", "その他",], //データ項目のラベル
       datasets: [{
-          backgroundColor: [
-              "#c97586",
-              "#bbbcde",
-              "#93b881",
-              "#e6b422"
-          ],
-          data: [45, 32, 18, 5] //グラフのデータ
+        backgroundColor: [
+          "#65ccf9",
+          "#2d72b8",
+          "#204be3",
+        ],
+        data: [30, 20, 10] //グラフのデータ
       }]
     },
     options: {
-      title: {
-        display: true,
-        //グラフタイトル
-        text: '新法案賛否'
+      legend: {position: 'bottom'},
+      maintainAspectRatio: false,
+      responsive: true,
+      layout: { //レイアウトの設定
+        padding: {
+          left: 30,
+          right: 30,
+          top: 0,
+          bottom: 50
+        }
       }
-    }
+    },
+    plugins: [dataLabelPlugin],
   });
+
+
+
+
+
+//   // グラフのタイプとか値とかを設定
+// let config = {
+//   type: "pie",
+//   data: {
+//       labels: ["docomo", "au", "softbank", "other"],
+//       datasets: [{
+//           data: [39.9, 27.4, 22.3, 10.4],
+//           backgroundColor: [
+//               "rgb(255, 99, 132)",
+//               "rgb(255, 159, 64)",
+//               "rgb(240, 240, 240)",
+//               "rgb(54, 162, 235)"
+//           ]
+//       }],
+//   },
+//   options: {
+//       responsive: false,
+//       plugins: {
+//         datalabels: {
+//             // color: '#000',
+//             // font: {
+//             //     weight: 'bold',
+//             //     size: 20,
+//             // },
+//             formatter: (value, ctx) => {
+//                 return value + '%';
+//             },
+//         }
+//     }
+//   }
+// };
+
+// // チャートの生成
+// window.addEventListener("load", function() {
+//   let ctx = document.getElementById("myChart").getContext("2d");
+//   new Chart(ctx, config);
+// }, false);
+
+  // //円グラフ
+  // var ctx = document.getElementById("myDoughnutChart1");
+  // var myDoughnutChart= new Chart(ctx, {
+  //   type: 'doughnut',
+  //   data: {
+  //     labels: ["賛成", "反対", "わからない", "未回答"], //データ項目のラベル
+  //     datasets: [{
+  //         backgroundColor: [
+  //             "#c97586",
+  //             "#bbbcde",
+  //             "#93b881",
+  //             "#e6b422"
+  //         ],
+  //         data: [45, 32, 18, 5] //グラフのデータ
+  //     }]
+  //   },
+  //   options: {
+  //     title: {
+  //       title: {
+  //       display: true,
+  //       text: 'カスタムチャートタイトル'
+  //   }
+  //     }
+  //   }
+  // });
+  // var ctx = document.getElementById("myDoughnutChart2");
+  // var myDoughnutChart= new Chart(ctx, {
+  //   type: 'doughnut',
+  //   data: {
+  //     labels: ["賛成", "反対", "わからない", "未回答"], //データ項目のラベル
+  //     datasets: [{
+  //         backgroundColor: [
+  //             "#c97586",
+  //             "#bbbcde",
+  //             "#93b881",
+  //             "#e6b422"
+  //         ],
+  //         data: [45, 32, 18, 5] //グラフのデータ
+  //     }]
+  //   },
+  //   options: {
+  //     title: {
+  //       display: true,
+  //       //グラフタイトル
+  //     }
+  //   }
+  // });
   
 
 
 
-  window.onresize = function(){
-    drawChart();
-  }
+  // window.onresize = function(){
+  //   drawChart();
+  // }

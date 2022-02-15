@@ -74,13 +74,9 @@
         background-color:  rgb(255, 255, 255);
         border-radius: 10px;
     }
-    canvas{
-        height: 800px;
-    }
     /* 円グラフ */
     .pie_container{
-        width: 100%;
-        height: auto;
+        flex: 1;
         background-color: rgb(255, 255, 255);
     }
     .pie{

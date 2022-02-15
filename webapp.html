@@ -19,8 +19,11 @@
   crossorigin="anonymous"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  
   <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -35,7 +38,7 @@
         <div class="header_container">
             <div><img src="img/posseLogo.png" alt="logo" class="logo"></div>
             <div class="week">4th week</div>
-            <div class="link c_pointer" id="open" onclick="showModal()">記録・投稿フォーム</div>
+            <div class="link c_pointer" id="open" onclick="showModal()">記録・投稿</div>
         </div>
     </header>
     <div class="all_container">
@@ -52,16 +55,18 @@
                         </div>
                         <div class="main_second_container">
                             <div class="pie_container">
-                                <div  class="pie" id="piechart" >
+                                <!-- <div  class="pie" id="piechart" >
                                     <canvas canvas id="myDoughnutChart1"></canvas>
                                     はんれーかく
-                                </div>
+                                </div> -->
+                                <canvas id="sircleGrafLanguages1"></canvas>
                             </div>
                             <div class="pie_container">
-                                <div class="pie" id="pie_graph2" >
+                                <!-- <div class="pie" id="pie_graph2" >
                                     <canvas id="myDoughnutChart2"></canvas>
                                     はんれーかく
-                                </div>
+                                </div> -->
+                                <canvas id="sircleGrafLanguages2"></canvas>
                             </div>
                         </div>
                         <div class="link_resp c_pointer" id="open_resp" onclick="showModal()"><p>記録・投稿フォーム</p></div>
@@ -119,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <p class="modal_bottom c_pointer" id="posting" >記録・投稿送信</p>
+            <p class="modal_bottom c_pointer" id="posting" >記録・投稿</p>
         </div>
         <div class="mask c_pointer" id="mask" onclick="modalClose()"></div>
     </div>
