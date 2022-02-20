@@ -50,15 +50,35 @@ try {
   echo($id);//urlのidの値をecho
   
   $stmt = $dbh->query("SELECT * FROM big_questions WHERE id = $id " );
-
   // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+  $stmtChoices = $dbh->query("SELECT name FROM choices WHERE question_id = 1");
+  // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
+  $choices = $stmtChoices->fetchAll(PDO::FETCH_ASSOC);
 
-  print_r($result);
-  
+  $stmtQuestion_id = $dbh->query("SELECT question_id FROM choices");
+  // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
+  $question_id= $stmtQuestion_id->fetchAll(PDO::FETCH_ASSOC);
 
-  $dbh = null;
+  $stmtCorrect_choice = $dbh->query("SELECT name FROM choices WHERE valid=1");
+  // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
+  $correct_choice= $stmtCorrect_choice->fetchAll(PDO::FETCH_ASSOC);
+
+// $prefectures_value = "SELECT * FROM prefectures WHERE id = $id";
+// $questions_value =  "SELECT * FROM questions INNER JOIN prefectures ON questions.prefecture_id = $id";
+// $selections_value = "SELECT * FROM selections INNER JOIN questions ON selections.question_id = questions.id where prefecture_id = $id";
+
+// $prefectures = $db->query($prefectures_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
+// $questions = $db->query($questions_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
+// $selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
+
+
+  // print_r($result);
+  // print_r($choices);
+  print_r($correct_choice[1]); 
+
+  // $dbh = null;
 
   // // foreach文で配列の中身を一行ずつ出力
   // foreach ($result as $result_value) {
@@ -79,17 +99,38 @@ try {
     <link rel="stylesheet" href="/css/quizy.css" />
   </head>
   <body>
-    <?php for ($i=0; $i < 3; $i++) { ?>
-      <div class="contain">
-      繰り返し表示される文章
-      </div>
-      <?php 
+    <?php for ($questions["order"]=1; $questions["order"]< 4; $questions["order"]++) {
+      echo
+        '<div id="quiz" class="question">
+          <div id="questionArea" class="question_area">' . $questions["order"] .'.この地名はなんて読む？</div>
+          <ul id="worksFigure" style="display: flex;flex-direction: column">
+        </div>';
+
+        // これじゃ全部の設問で選択肢が問１になる
+          foreach ($choices as $selection) {
+            echo '<li>' . $selection["name"] . '</li>'; 
+        }
+        echo
+        '
+        <div id="correctBox">
+          <p class="text_seikai">正解！</p>
+          <p>正解はです</p>
+        </div>';
+        echo
+        '
+        <div id="correctBox">
+          <p class="text_seikai">不正解！</p>
+          <p>正解はです</p>
+        </div>';
     } 
+    // ？？？
+    // <p>正解は ' . $correct_choice[$questions["order"]]["name"] . 'です</p>
     ?>
       
       
       <h3>ガチで
-        <!-- <?php echo htmlspecialchars($_GET["id"]) ;?> -->
+        <!-- <?= $result[htmlspecialchars($_GET["id"])] ;?>  -->
+        <?= $result["name"] ;?> 
 
         の人しか解けない！ #
 
@@ -97,7 +138,16 @@ try {
 
         <!-- <?= print_r($result[0]["name"]); ?> -->
         <?=$result["name"]?>
-        
-    <script type="text/javascript" src="/js/quizy.js"></script>
+  </h3>
+
+   <?php for ($questions["order"]=1; $questions["order"] < 3; $questions["order"]++) { 
+    
+
+}
+?> 
+
+
+        <!-- 邪魔だからコメントアウト -->
+    <!-- <script type="text/javascript" src="/js/quizy.js"></script> -->
   </body>
 </html>

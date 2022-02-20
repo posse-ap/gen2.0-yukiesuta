@@ -28,7 +28,7 @@ INSERT INTO choices (question_id,name,valid) VALUES
 (1,'こうわ',0),
 (2,'かめいど',1),
 (2,'かめど',0),
-(3,'かめと',0);
+(2,'かめと',0);
 
 -- これなんのテーブル？？？？
 DROP TABLE IF EXISTS `questions`;
