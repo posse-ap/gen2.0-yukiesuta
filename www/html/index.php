@@ -49,20 +49,17 @@ try {
 
   echo($id);//urlのidの値をecho
   
-  $stmt = $dbh->query("SELECT * FROM big_questions WHERE id = $id " );
+  $stmt = $dbh->query("SELECT * FROM big_questions WHERE id = $id" );
   // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  $stmtChoices = $dbh->query("SELECT name FROM choices WHERE question_id = 1");
-  // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
+  $stmtChoices = $dbh->query("SELECT name FROM choices WHERE prefecture_id = $id");
   $choices = $stmtChoices->fetchAll(PDO::FETCH_ASSOC);
 
-  $stmtQuestion_id = $dbh->query("SELECT question_id FROM choices");
-  // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
+  $stmtQuestion_id = $dbh->query("SELECT question_id FROM choices WHERE prefecture_id = $id");
   $question_id= $stmtQuestion_id->fetchAll(PDO::FETCH_ASSOC);
 
-  $stmtCorrect_choice = $dbh->query("SELECT name FROM choices WHERE valid=1");
-  // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
+  $stmtCorrect_choice = $dbh->query("SELECT name FROM choices WHERE valid=1 AND prefecture_id = $id");
   $correct_choice= $stmtCorrect_choice->fetchAll(PDO::FETCH_ASSOC);
 
 // $prefectures_value = "SELECT * FROM prefectures WHERE id = $id";
@@ -76,7 +73,7 @@ try {
 
   // print_r($result);
   // print_r($choices);
-  print_r($correct_choice[1]); 
+  print_r($correct_choice); 
 
   // $dbh = null;
 
@@ -99,10 +96,10 @@ try {
     <link rel="stylesheet" href="/css/quizy.css" />
   </head>
   <body>
-    <?php for ($questions["order"]=1; $questions["order"]< 4; $questions["order"]++) {
+    <?php for ($i=0; $i< count($correct_choice); $i++) {
       echo
         '<div id="quiz" class="question">
-          <div id="questionArea" class="question_area">' . $questions["order"] .'.この地名はなんて読む？</div>
+          <div id="questionArea" class="question_area">' . $i .'.この地名はなんて読む？</div>
           <ul id="worksFigure" style="display: flex;flex-direction: column">
         </div>';
 
@@ -114,7 +111,8 @@ try {
         '
         <div id="correctBox">
           <p class="text_seikai">正解！</p>
-          <p>正解はです</p>
+          <p>正解は ' . $correct_choice["name"] . '
+          です</p>
         </div>';
         echo
         '

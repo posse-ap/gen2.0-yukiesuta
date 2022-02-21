@@ -8,9 +8,10 @@ CREATE TABLE big_questions (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 name VARCHAR(225) NOT NULL
 );
+-- idは自動で書いてる
 INSERT INTO big_questions (name) VALUES
-('東京の難読地名クイズ'),
-('広島の難読地名クイズ');
+('東京'),
+('広島');
 
 -- 別のテーブルも作れる テーブルは一つにまとめる、全体スケジュール参照
 
@@ -18,17 +19,34 @@ INSERT INTO big_questions (name) VALUES
 DROP TABLE IF EXISTS `choices`;
 CREATE TABLE choices (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+prefecture_id INT NOT NULL,
 question_id  INT NOT NULL,
 name VARCHAR(225) NOT NULL,
 valid INT NOT NULL
 );
-INSERT INTO choices (question_id,name,valid) VALUES
-(1,'たかなわ',1),
-(1,'たかわ',0),
-(1,'こうわ',0),
-(2,'かめいど',1),
-(2,'かめど',0),
-(2,'かめと',0);
+INSERT INTO choices (prefecture_id,question_id,name,valid) VALUES
+(1,1,'たかなわ',1),
+(1,1,'たかわ',0),
+(1,1,'こうわ',0),
+(1,2,'かめいど',1),
+(1,2,'かめど',0),
+(1,2,'かめと',0),
+(2,2,'むかいなだ',1),
+(2,2,'むこうひら',0),
+(2,2,'むきひら',0);
+
+-- 正解テーブル
+DROP TABLE IF EXISTS `valids`;
+CREATE TABLE valids (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+prefecture_id INT NOT NULL,
+valid_kanji VARCHAR(225) NOT NULL
+);
+INSERT INTO choices (prefecture_id,prefecture_id) VALUES
+(1,'高輪'),
+(1,'亀戸'),
+(2,'向洋')
+
 
 -- これなんのテーブル？？？？
 DROP TABLE IF EXISTS `questions`;
