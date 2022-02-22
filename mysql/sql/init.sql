@@ -31,9 +31,9 @@ INSERT INTO choices (prefecture_id,question_id,name,valid) VALUES
 (1,2,'かめいど',1),
 (1,2,'かめど',0),
 (1,2,'かめと',0),
-(2,2,'むかいなだ',1),
-(2,2,'むこうひら',0),
-(2,2,'むきひら',0);
+(2,1,'むかいなだ',1),
+(2,1,'むこうひら',0),
+(2,1,'むきひら',0);
 
 -- 正解テーブル
 -- 114行目を正解が出るようにする
@@ -41,11 +41,12 @@ DROP TABLE IF EXISTS `configurations`;
 CREATE TABLE configurations (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 prefecture_id INT NOT NULL,
+question_id INT NOT NULL ,
 valid_kanji VARCHAR(225) NOT NULL,
 img VARCHAR(225) NOT NULL
 );
-INSERT INTO configurations (prefecture_id,valid_kanji,img) VALUES
-(1,'高輪','takanawa.png'),
-(1,'亀戸','kameido.png'),
-(2,'向洋','mukainada.png')
+INSERT INTO configurations (prefecture_id,question_id,valid_kanji,img) VALUES
+(1,1,'高輪','takanawa.png'),
+(1,2,'亀戸','kameido.png'),
+(2,1,'向洋','mukainada.png')
 

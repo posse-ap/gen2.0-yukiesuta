@@ -21,30 +21,6 @@ try {
 }
 
 
-  // $choices_value =  "SELECT * FROM choices";
-  // $choices = $dbh->query($choices_value)->fetch();
-
-  // var_dump($choices);
-
-  // $sql = 'SELECT * FROM big_questions';
-  // $Titles = $dbh->prepare($sql);
-  // // $stmt->bindValue(':name', '花子');
-  // $Titles->execute();
-  // echo $Titles;
-
-
-// 東京or広島
-  // prepare:ただ文章（変数込みのsql文を用意する ：の後に後で代入する
-  // $Titles = $dbh->prepare('SELECT * FROM big_questions WHERE name = ?');
-  // // execute()が代入を実行（データベースから分取ってくる）する、引数に配列を入れる
-  // // $Titles->execute(array($Titles));
-  // $Titles = $Titles->execute();
-  // // fetchは1行目だけを取ってくる（配列１こ）、fetchAllは全部取ってくる（二次元配列）
-  // $Title = $Titles->fetch();
-
-  // var_dump($Title);
-
-
   $id = $_GET["id"];
 
   echo($id);//urlのidの値をecho
@@ -53,8 +29,6 @@ try {
   // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  // $choices_stmt = $dbh->query("SELECT name FROM choices WHERE prefecture_id = $id");
-  // $choices_result = $choices_stmt->fetchAll(PDO::FETCH_ASSOC);
 
   $question_id_stmt = $dbh->query("SELECT question_id FROM choices WHERE prefecture_id = $id");
   $question_id_result= $question_id_stmt->fetch(PDO::FETCH_ASSOC);
@@ -62,97 +36,56 @@ try {
   $correct_choice_stmt = $dbh->query("SELECT name FROM choices WHERE valid=1 AND prefecture_id = $id");
   $correct_choice_result= $correct_choice_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  $configurations_stmt = $dbh->query("SELECT * FROM configurations WHERE  prefecture_id = $id");
-  $configurations_result = $configurations_stmt->fetch(PDO::FETCH_ASSOC);
-
-// $prefectures_value = "SELECT * FROM prefectures WHERE id = $id";
-// $questions_value =  "SELECT * FROM questions INNER JOIN prefectures ON questions.prefecture_id = $id";
-// $selections_value = "SELECT * FROM selections INNER JOIN questions ON selections.question_id = questions.id where prefecture_id = $id";
-
-// $prefectures = $db->query($prefectures_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
-// $questions = $db->query($questions_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
-// $selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
-
-
-  // print_r($result);
-  // print_r($choices);
-  print_r($configurations_result); 
-
-  // $dbh = null;
-
-  // // foreach文で配列の中身を一行ずつ出力
-  // foreach ($result as $result_value) {
-    
-  //   // データベースのフィールド名で出力
-  //   echo $result_value;
-  // }
-
 
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>kuizy</title>
-    <link rel="stylesheet" href="/css/quizy.css" />
-  </head>
-  <body>
-    <?php for ($i=1; $i< count($correct_choice_result)+1; $i++) {
-      echo
-        '<div id="quiz" class="question">
-          <div id="questionArea" class="question_area">' . $i .'.この地名はなんて読む？</div>
-          <ul id="worksFigure" style="display: flex;flex-direction: column">
-        </div>';
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kuizy</title>
+  <link rel="stylesheet" href="/css/quizy.css" />
+</head>
+<body>
+  <?php for ($i=1; $i< count($correct_choice_result)+1; $i++) {
 
-        $choices_stmt = $dbh->query("SELECT name FROM choices WHERE prefecture_id = $id AND question_id = $i");
-        $choices_result = $choices_stmt->fetchAll(PDO::FETCH_ASSOC);
+    $configuration_stmt = $dbh->query("SELECT * FROM configurations WHERE prefecture_id = $id AND question_id = $i");
+    $configuration_result = $configuration_stmt->fetch(PDO::FETCH_ASSOC);
 
 
-        
-          foreach ($choices_result as $selection) {
-            echo '<li>' . $selection["name"] . '</li>'; 
-        }
-        echo
-        '
-        <div id="correctBox">
-          <p class="text_seikai">正解！</p>
-          <p>正解は ' . $configurations_result['valid_kanji'] . '
-          です</p>
-        </div>';
-        echo
-        '
-        <div id="correctBox">
-          <p class="text_seikai">不正解！</p>
-          <p>正解は ' . $configurations_result['valid_kanji'] . '
-        </div>';
+    echo
+      '<div id="quiz" class="question">
+        <div id="questionArea" class="question_area">' . $i .'.この地名はなんて読む？</div>
+        <img src=../img/' . $configuration_result["img"] . ' alt="画像">
+      </div>';
+
+      $choices_stmt = $dbh->query("SELECT * FROM choices WHERE prefecture_id = $id AND question_id = $i");
+      $choices_result = $choices_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      $valid_choices_stmt = $dbh->query("SELECT * FROM choices WHERE prefecture_id = $id AND question_id = $i AND valid = 1");
+      $valid_choices_result = $valid_choices_stmt->fetch(PDO::FETCH_ASSOC);
+
+      foreach ($choices_result as $selection) {
+        echo '<li>' . $selection["name"] . '</li>'; 
+      }
+    echo
+      '
+      <div id="correctBox">
+        <p class="text_seikai">正解！</p>
+        <p>正解は ' . $valid_choices_result['name'] . '
+        です</p>
+      </div>';
+
+    echo
+      '
+      <div id="correctBox">
+        <p class="text_seikai">不正解！</p>
+        <p>正解は ' . $valid_choices_result['name'] . '
+        です</p>
+      </div>';
     } 
-    // ？？？
-    // <p>正解は ' . $correct_choice[$questions["order"]]["name"] . 'です</p>
-    ?>
-      
-      
-      <h3>ガチで
-        <!-- <?= $result[htmlspecialchars($_GET["id"])] ;?>  -->
-        <?= $result["name"] ;?> 
+  ?>
 
-        の人しか解けない！ #
-
-        
-
-        <!-- <?= print_r($result[0]["name"]); ?> -->
-        <?=$result["name"]?>
-  </h3>
-
-   <?php for ($questions["order"]=1; $questions["order"] < 3; $questions["order"]++) { 
-    
-
-}
-?> 
-
-
-        <!-- 邪魔だからコメントアウト -->
-    <!-- <script type="text/javascript" src="/js/quizy.js"></script> -->
-  </body>
+</body>
 </html>
