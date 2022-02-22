@@ -30,7 +30,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>kuizy</title>
-    <link rel="stylesheet" href="/css/quizy.css" />
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/quizy.css"/>
   </head>
   <body>
     <?php 
@@ -55,7 +56,7 @@
 
     echo
       '<div>
-        <div>' . $i .'.この地名はなんて読む？</div>
+        <div class="question_stmt"><span>' . $i .'.この地名はなんて読む？</span></div>
         <img src=../img/' . $configuration_result["img"] . ' alt="画像">
       </div>';
 
@@ -66,25 +67,25 @@
       $valid_choices_result = $valid_choices_stmt->fetch(PDO::FETCH_ASSOC);
 
       foreach ($choices_result as $selection) {
-        echo '<li>' . $selection["name"] . '</li>'; 
+        echo '<li id="selection' . $selection["id"] . '">' . $selection["name"] . '</li>'; 
       }
     echo
       '
-      <div>
-        <p>正解！</p>
+      <div class="valid_stmt my_hidden" id="valid_stmt' . $i . '">
+        <p><span>正解！</span></p>
         <p>正解は ' . $valid_choices_result['name'] . '
         です</p>
       </div>';
 
     echo
       '
-      <div>
-        <p>不正解！</p>
+      <div class="invalid_stmt my_hidden" id="invalid_stmt' . $i . '">
+        <p><span>不正解！</span></p>
         <p>正解は ' . $valid_choices_result['name'] . '
         です</p>
       </div>';
     } 
   ?>
-
+<script src="/js/quizy.js"></script>
 </body>
 </html>

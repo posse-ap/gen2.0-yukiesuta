@@ -1,0 +1,46 @@
+/***** common *****/
+
+body{
+    line-height: 2.0;
+}
+
+li{
+    list-style: none;
+}
+
+.my_hidden{
+    display: none;
+}
+
+/***** End common *****/
+
+
+/***** question_statement *****/
+
+.question_stmt span{
+    border-bottom: solid 3px rgb(255,255,0);
+}
+
+/***** End problem_statement *****/
+
+
+
+/***** choices *****/
+
+
+
+/***** End choices *****/
+
+
+
+
+/***** answer *****/
+
+.valid_stmt span{
+    border-bottom: solid 3px rgb(255,0,0);
+}
+.invalid_stmt span{
+    border-bottom: solid 3px rgb(0,0,255);
+}
+
+/***** End answer *****/
