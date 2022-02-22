@@ -12,6 +12,10 @@ li{
     display: none;
 }
 
+.cannot_click{
+    pointer-events: none;
+}
+
 /***** End common *****/
 
 
