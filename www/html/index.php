@@ -53,14 +53,17 @@ try {
   // FETCH_ASSOCでカラム名をキーとする連想配列で返します。
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  $stmtChoices = $dbh->query("SELECT name FROM choices WHERE prefecture_id = $id");
-  $choices = $stmtChoices->fetchAll(PDO::FETCH_ASSOC);
+  // $choices_stmt = $dbh->query("SELECT name FROM choices WHERE prefecture_id = $id");
+  // $choices_result = $choices_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  $stmtQuestion_id = $dbh->query("SELECT question_id FROM choices WHERE prefecture_id = $id");
-  $question_id= $stmtQuestion_id->fetchAll(PDO::FETCH_ASSOC);
+  $question_id_stmt = $dbh->query("SELECT question_id FROM choices WHERE prefecture_id = $id");
+  $question_id_result= $question_id_stmt->fetch(PDO::FETCH_ASSOC);
 
-  $stmtCorrect_choice = $dbh->query("SELECT name FROM choices WHERE valid=1 AND prefecture_id = $id");
-  $correct_choice= $stmtCorrect_choice->fetchAll(PDO::FETCH_ASSOC);
+  $correct_choice_stmt = $dbh->query("SELECT name FROM choices WHERE valid=1 AND prefecture_id = $id");
+  $correct_choice_result= $correct_choice_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  $configurations_stmt = $dbh->query("SELECT * FROM configurations WHERE  prefecture_id = $id");
+  $configurations_result = $configurations_stmt->fetch(PDO::FETCH_ASSOC);
 
 // $prefectures_value = "SELECT * FROM prefectures WHERE id = $id";
 // $questions_value =  "SELECT * FROM questions INNER JOIN prefectures ON questions.prefecture_id = $id";
@@ -73,7 +76,7 @@ try {
 
   // print_r($result);
   // print_r($choices);
-  print_r($correct_choice); 
+  print_r($configurations_result); 
 
   // $dbh = null;
 
@@ -96,29 +99,33 @@ try {
     <link rel="stylesheet" href="/css/quizy.css" />
   </head>
   <body>
-    <?php for ($i=0; $i< count($correct_choice); $i++) {
+    <?php for ($i=1; $i< count($correct_choice_result)+1; $i++) {
       echo
         '<div id="quiz" class="question">
           <div id="questionArea" class="question_area">' . $i .'.この地名はなんて読む？</div>
           <ul id="worksFigure" style="display: flex;flex-direction: column">
         </div>';
 
-        // これじゃ全部の設問で選択肢が問１になる
-          foreach ($choices as $selection) {
+        $choices_stmt = $dbh->query("SELECT name FROM choices WHERE prefecture_id = $id AND question_id = $i");
+        $choices_result = $choices_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+        
+          foreach ($choices_result as $selection) {
             echo '<li>' . $selection["name"] . '</li>'; 
         }
         echo
         '
         <div id="correctBox">
           <p class="text_seikai">正解！</p>
-          <p>正解は ' . $correct_choice["name"] . '
+          <p>正解は ' . $configurations_result['valid_kanji'] . '
           です</p>
         </div>';
         echo
         '
         <div id="correctBox">
           <p class="text_seikai">不正解！</p>
-          <p>正解はです</p>
+          <p>正解は ' . $configurations_result['valid_kanji'] . '
         </div>';
     } 
     // ？？？

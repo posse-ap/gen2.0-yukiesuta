@@ -36,38 +36,16 @@ INSERT INTO choices (prefecture_id,question_id,name,valid) VALUES
 (2,2,'むきひら',0);
 
 -- 正解テーブル
-DROP TABLE IF EXISTS `valids`;
-CREATE TABLE valids (
+-- 114行目を正解が出るようにする
+DROP TABLE IF EXISTS `configurations`;
+CREATE TABLE configurations (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 prefecture_id INT NOT NULL,
-valid_kanji VARCHAR(225) NOT NULL
+valid_kanji VARCHAR(225) NOT NULL,
+img VARCHAR(225) NOT NULL
 );
-INSERT INTO choices (prefecture_id,prefecture_id) VALUES
-(1,'高輪'),
-(1,'亀戸'),
-(2,'向洋')
+INSERT INTO configurations (prefecture_id,valid_kanji,img) VALUES
+(1,'高輪','takanawa.png'),
+(1,'亀戸','kameido.png'),
+(2,'向洋','mukainada.png')
 
-
--- これなんのテーブル？？？？
-DROP TABLE IF EXISTS `questions`;
-CREATE TABLE questions (
-id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-big_question_id  INT NOT NULL,
-image VARCHAR(225) NOT NULL
-);
-INSERT INTO questions (big_question_id,image) VALUES
-(1,'takanawa.png'),
-(1,'kameido.png'),
-(2,'mukainada.png');
-
-
--- -- 広島
--- CREATE TABLE hiroshima_choices (
--- hiroshima_choice_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
--- choice1 VARCHAR(225) NOT NULL,
--- choice2 VARCHAR(225) NOT NULL,
--- choice3 VARCHAR(225) NOT NULL
--- );
--- INSERT INTO choices (hiroshima_choice1,hiroshima_choice2,hiroshima_choice3) VALUES
--- ('いばらいち','せいげんち','いのはらし'),
--- ('かるが','いがるけ','かりどめや');
