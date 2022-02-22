@@ -22,7 +22,6 @@
   }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -66,12 +65,15 @@
       $valid_choices_stmt = $dbh->query("SELECT * FROM choices WHERE prefecture_id = $id AND question_id = $i AND valid = 1");
       $valid_choices_result = $valid_choices_stmt->fetch(PDO::FETCH_ASSOC);
 
+      shuffle($choices_result);
+      
       foreach ($choices_result as $selection) {
-        echo '<li id="selection' . $selection["id"] . '">' . $selection["name"] . '</li>'; 
+        echo '<li id="selection' . $selection["id"] . '" onclick="check(' . $selection["question_id"] . ',' . $selection["valid"] . ')">' . $selection["name"] . '</li>'; 
       }
-    echo
+
+      echo
       '
-      <div class="valid_stmt my_hidden" id="valid_stmt' . $i . '">
+      <div class="valid_stmt my_hidden" id="valid_stmt' . $selection["question_id"] . '1">
         <p><span>正解！</span></p>
         <p>正解は ' . $valid_choices_result['name'] . '
         です</p>
@@ -79,7 +81,7 @@
 
     echo
       '
-      <div class="invalid_stmt my_hidden" id="invalid_stmt' . $i . '">
+      <div class="invalid_stmt my_hidden" id="invalid_stmt' . $selection["question_id"] . '0">
         <p><span>不正解！</span></p>
         <p>正解は ' . $valid_choices_result['name'] . '
         です</p>

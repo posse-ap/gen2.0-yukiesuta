@@ -36,7 +36,6 @@ INSERT INTO choices (prefecture_id,question_id,name,valid) VALUES
 (2,1,'むきひら',0);
 
 -- 正解テーブル
--- 114行目を正解が出るようにする
 DROP TABLE IF EXISTS `configurations`;
 CREATE TABLE configurations (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
