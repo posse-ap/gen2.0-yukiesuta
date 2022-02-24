@@ -67,10 +67,15 @@
 
       shuffle($choices_result);
       
-      foreach ($choices_result as $selection) {
-        echo '<li id="selection' . $selection["id"] . '" onclick="check(' . $selection["question_id"] . ',' . $selection["valid"] . ')">' . $selection["name"] . '</li>'; 
-      }
+      echo '<ul id="selections' . $configuration_result["question_id"] . '">';
 
+      foreach ($choices_result as $selection) {
+        echo '
+          <li onclick="check(' . $selection["question_id"] . ',' . $selection["valid"] . ')">' . $selection["name"] . '</li>';
+        }
+        
+      echo '</ul>';
+        
       echo
       '
       <div class="valid_stmt my_hidden" id="valid_stmt' . $selection["question_id"] . '1">
