@@ -47,22 +47,22 @@
   $correct_choice_stmt = $dbh->query("SELECT name FROM choices WHERE valid=1 AND prefecture_id = $id");
   $correct_choice_result= $correct_choice_stmt->fetchAll(PDO::FETCH_ASSOC);
   
-  for ($i=1; $i< count($correct_choice_result)+1; $i++) {
+  for ($question_count=1; $question_count< count($correct_choice_result)+1; $question_count++) {
 
-    $configuration_stmt = $dbh->query("SELECT * FROM configurations WHERE prefecture_id = $id AND question_id = $i");
+    $configuration_stmt = $dbh->query("SELECT * FROM configurations WHERE prefecture_id = $id AND question_id = $question_count");
     $configuration_result = $configuration_stmt->fetch(PDO::FETCH_ASSOC);
 
 
     echo
       '<div>
-        <div class="question_stmt"><span>' . $i .'.この地名はなんて読む？</span></div>
+        <div class="question_stmt"><span>' . $question_count .'.この地名はなんて読む？</span></div>
         <img src=../img/' . $configuration_result["img"] . ' alt="画像">
       </div>';
 
-      $choices_stmt = $dbh->query("SELECT * FROM choices WHERE prefecture_id = $id AND question_id = $i");
+      $choices_stmt = $dbh->query("SELECT * FROM choices WHERE prefecture_id = $id AND question_id = $question_count");
       $choices_result = $choices_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      $valid_choices_stmt = $dbh->query("SELECT * FROM choices WHERE prefecture_id = $id AND question_id = $i AND valid = 1");
+      $valid_choices_stmt = $dbh->query("SELECT * FROM choices WHERE prefecture_id = $id AND question_id = $question_count AND valid = 1");
       $valid_choices_result = $valid_choices_stmt->fetch(PDO::FETCH_ASSOC);
 
       shuffle($choices_result);

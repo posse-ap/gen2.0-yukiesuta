@@ -44,7 +44,7 @@ CREATE TABLE configurations (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 prefecture_id INT NOT NULL,
 question_id INT NOT NULL ,
-valid_kanji VARCHAR(225) NOT NULL,
+valid_kanji VARCHAR(225) NOT NULL,-- ←使わない
 img VARCHAR(225) NOT NULL
 );
 INSERT INTO configurations (prefecture_id,question_id,valid_kanji,img) VALUES
