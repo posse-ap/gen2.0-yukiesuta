@@ -27,6 +27,9 @@ valid INT NOT NULL
 INSERT INTO choices (prefecture_id,question_id,name,valid) VALUES
 (1,1,'たかなわ',1),
 (1,1,'たかわ',0),
+(1,1,'たわ',0),
+(1,1,'かわ',0),
+(1,1,'た',0),
 (1,1,'こうわ',0),
 (1,2,'かめいど',1),
 (1,2,'かめど',0),
