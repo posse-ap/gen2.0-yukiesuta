@@ -56,8 +56,10 @@
     echo
       '<div>
         <div class="question_stmt"><span>' . $question_count .'.この地名はなんて読む？</span></div>
-        <img src=../img/' . $configuration_result["img"] . ' alt="画像">
+        <img class="question_img" src=../img/' . $configuration_result["img"] . ' alt="画像">
       </div>';
+      
+      echo '<ul id="selections' . $configuration_result["question_id"] . '">';
 
       $choices_stmt = $dbh->query("SELECT * FROM choices WHERE prefecture_id = $id AND question_id = $question_count");
       $choices_result = $choices_stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -67,18 +69,16 @@
 
       shuffle($choices_result);
       
-      echo '<ul id="selections' . $configuration_result["question_id"] . '">';
-
       foreach ($choices_result as $selection) {
         echo '
-          <li onclick="check(' . $selection["question_id"] . ',' . $selection["valid"] . ')">' . $selection["name"] . '</li>';
+          <li class="choice pointer" onclick="check(' . $selection["question_id"] . ',' . $selection["valid"] . ')">' . $selection["name"] . ' </li>';
         }
         
       echo '</ul>';
         
       echo
       '
-      <div class="valid_stmt my_hidden" id="valid_stmt' . $selection["question_id"] . '1">
+      <div class="valid_stmt my_hidden answer_box" id="valid_stmt' . $selection["question_id"] . '1">
         <p><span>正解！</span></p>
         <p>正解は ' . $valid_choices_result['name'] . '
         です</p>
@@ -86,7 +86,7 @@
 
     echo
       '
-      <div class="invalid_stmt my_hidden" id="invalid_stmt' . $selection["question_id"] . '0">
+      <div class="invalid_stmt my_hidden answer_box" id="invalid_stmt' . $selection["question_id"] . '0">
         <p><span>不正解！</span></p>
         <p>正解は ' . $valid_choices_result['name'] . '
         です</p>
