@@ -1,0 +1,71 @@
+/***** common *****/
+
+body{
+    line-height: 2.0;
+    width: 50%;
+    margin: auto;
+}
+
+li{
+    list-style: none;
+}
+
+.my_hidden{
+    display: none;
+}
+
+.cannot_click{
+    pointer-events: none;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+/***** End common *****/
+
+
+/***** question_statement *****/
+
+.question_img{
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+.question_stmt span{
+    border-bottom: solid 3px rgb(255,255,0);
+}
+
+/***** End problem_statement *****/
+
+
+
+/***** choices *****/
+
+.choice{
+    border: 1px solid #ccc; /* 枠線 */
+    box-shadow: 1px 1px 2px #ccc;
+    margin-bottom: 10px;
+    padding: 7px;
+}
+
+/***** End choices *****/
+
+
+
+
+/***** answer *****/
+
+.valid_stmt span{
+    border-bottom: solid 3px rgb(255,0,0);
+}
+.invalid_stmt span{
+    border-bottom: solid 3px rgb(0,0,255);
+}
+.answer_box{
+    background-color: rgb(235, 235, 235);
+    padding: 7px;
+}
+
+/***** End answer *****/
