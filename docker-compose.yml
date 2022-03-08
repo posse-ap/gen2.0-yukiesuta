@@ -28,7 +28,7 @@ services:
       - db
 
   db:
-    image: mysql:5.7
+    image: mysql:latest
     ports:
       - 13306:3306
     volumes:
@@ -40,7 +40,7 @@ services:
       MYSQL_USER: yukiho
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: secret
-    # platform: linux/x86_64 # M1チップ対応のため追記
+    platform: linux/x86_64 # M1チップ対応のため追記
 
     # db:
     # platform: linux/x86_64 # M1チップ対応のため追記
