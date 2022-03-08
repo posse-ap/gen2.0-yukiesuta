@@ -20,6 +20,10 @@
         /* display: block; */
         width: 40%;
     }
+
+    rect{
+        /* こいつが悪いことしている */
+    }
 /* ヘッダー */
     .logo{
         height: 30px;
@@ -76,7 +80,7 @@
     .bar_graph{
         height:auto;
         background-color:  rgb(255, 255, 255);
-        border-radius: 100px;
+        border-radius: 10px;
     }
     /* 円グラフ */
     .pie_container{

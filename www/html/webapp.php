@@ -6,19 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>posse web app</title>
     
-    <link rel="stylesheet" href="webapp.css" />
-    <link rel="stylesheet" href="webapp_resp.css" />
-    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-
-<!-- ?? -->
-<!-- <link rel="stylesheet" href="path/to/reset.css"> -->
-<!-- <link rel="stylesheet" href="path/to/style.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
   integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
   crossorigin="anonymous"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+  <link href="webapp.css?v=<?=date('Y_m_d_H_i_s');?>" rel="stylesheet">
   
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
