@@ -1,4 +1,6 @@
 "use strict";
+
+console.log(a);
 const modal_open = document.getElementById("open");
 const modal_open_resp = document.getElementById("open_resp");
 const modal_close = document.getElementById("close");

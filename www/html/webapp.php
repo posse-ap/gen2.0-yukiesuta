@@ -123,11 +123,12 @@
         </div>
         <div class="mask c_pointer" id="mask" onclick="modalClose()"></div>
     </div>
-    <script type="text/javascript" src="webapp.js"></script>
     <script>
-        <?php
-            $eee = "aaaa"
-        ?>
+    const a = "<?= "weyi" ;?>"
+    // こんな感じで下準備する
     </script>
+
+<script type="text/javascript" src="webapp.js">
+</script>
 </body>
 </html>
