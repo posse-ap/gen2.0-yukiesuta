@@ -16,6 +16,10 @@
     dd{
         margin: 0;
     }
+    canvas{
+        /* display: block; */
+        width: 40%;
+    }
 /* ヘッダー */
     .logo{
         height: 30px;
@@ -72,12 +76,13 @@
     .bar_graph{
         height:auto;
         background-color:  rgb(255, 255, 255);
-        border-radius: 10px;
+        border-radius: 100px;
     }
     /* 円グラフ */
     .pie_container{
         flex: 1;
         background-color: rgb(255, 255, 255);
+        border-radius: 10px;
     }
     .pie{
         border-radius: 10px;
@@ -136,6 +141,7 @@
         margin: auto;
         line-height: 35px;
         display: none;
+        position: fixed;
     }
     /* ばつの部分 */
         .modal_close{
@@ -243,6 +249,7 @@
     /* ロード画面 */
         .loading{
             font-size: 40px;
+
             /* background-color: rgb(255, 255, 255); */
             position: absolute;
             display: none;
