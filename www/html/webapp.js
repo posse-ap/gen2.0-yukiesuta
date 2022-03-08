@@ -49,45 +49,8 @@ const m_top = document.getElementById("m_top");
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
-
-  var data = google.visualization.arrayToDataTable([
-    ['Task', 'Hours per Day'],
-    ['Work',     11],
-    ['Eat',      2],
-    ['Commute',  2],
-    ['Watch TV', 2],
-    ['Sleep',    7]
-  ]);
-
-  var options = {
-    title: 'My Daily Activities'
-  };
-
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-  chart.draw(data, options);
-}
 
 
-
-
-
-// ライブラリのロード
-google.load('visualization', '1', {'packages':['corechart']});     
-
-// グラフを描画する為のコールバック関数を指定
-google.setOnLoadCallback(drawChart);
-
-
-
-
-
-window.addEventListener('DOMContentLoaded', function(){
-  window.addEventListener('resize', function(){
-    
-  });
-});
 
 // グラフの描画   
 function drawChart() {         
