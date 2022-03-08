@@ -22,43 +22,6 @@ const m_top = document.getElementById("m_top");
     load.style.display = "none";
   }
   
-  // post.addEventListener("click", function () {
-    
-    // load.style.display = "block";
-  //   // m_top.style.display = "none";
-  //   // post.style.display = "none";
-    
-  //   const textbox = document.getElementById("name2")
-  //   const value = textbox.value
-  //   console.log(value)
-  //   const tweetUrl = "https://twitter.com/intent/tweet?text=" + value;
-  //   console.log(tweetUrl)
-    
-  //   if (document.getElementById('check').checked){
-  //     setTimeout('open(tweetUrl),modalClose()', 2000);
-      
-  //   }else{
-  //     console.log("ツイートしない");
-  //     modalClose();
-  //   }
-  // });
-  
-  
-  
-  
-  
-    // const textBox = document.getElementById("name")
-    // const value = textBox.value
-    
-    // const asd = "aaa";
-    // const tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(value);
-    
-    // console.log(tweetUrl)
-    // console.log(document.getElementById("name").value);
-  
-  
-  
-  
     document.getElementById("posting").onclick = function(){
       const textbox = document.getElementById("name2")
       const value = textbox.value
@@ -130,35 +93,20 @@ function drawChart() {
   // 配列からデータの生成
   var data = google.visualization.arrayToDataTable([
     ['日付', 'データ'],
-    ['',  16.08 ],
-    ['2',  14.99 ],            
-    ['',  4],
-    ['4',  12.98 ], 
-    ['',  13.48 ],
+    ['2',  14.99 ],
+    ['4',  12.98 ],
     ['6',  13.99 ],
-    ['',  15.53 ],
-    ['8',  16.08 ],
-    ['',  14.99 ],            
-    ['10',  4],
-    ['',  12.98 ], 
+    ['8',  16.08 ],           
+    ['10',  4], 
     ['12',  13.48 ],
-    ['',  13.99 ],
     ['14',  15.53 ],
-    ['',  16.08 ],
-    ['16',  14.99 ],            
-    ['',  4],
+    ['16',  14.99 ],
     ['18',  12.98 ], 
-    ['',  13.48 ],
     ['20',  13.99 ],
-    ['',  15.53 ],
-    ['22',  16.08 ],
-    ['',  14.99 ],            
+    ['22',  16.08 ],          
     ['24',  4],
-    ['',  12.98 ], 
     ['26',  13.48 ],
-    ['',  13.99 ],
     ['28',  15.53 ],
-    ['',  16.08 ],
     ['30',  14.99 ]
   ]);      
 
@@ -286,99 +234,3 @@ var dataLabelPlugin = {
     plugins: [dataLabelPlugin],
   });
 
-
-
-
-
-//   // グラフのタイプとか値とかを設定
-// let config = {
-//   type: "pie",
-//   data: {
-//       labels: ["docomo", "au", "softbank", "other"],
-//       datasets: [{
-//           data: [39.9, 27.4, 22.3, 10.4],
-//           backgroundColor: [
-//               "rgb(255, 99, 132)",
-//               "rgb(255, 159, 64)",
-//               "rgb(240, 240, 240)",
-//               "rgb(54, 162, 235)"
-//           ]
-//       }],
-//   },
-//   options: {
-//       responsive: false,
-//       plugins: {
-//         datalabels: {
-//             // color: '#000',
-//             // font: {
-//             //     weight: 'bold',
-//             //     size: 20,
-//             // },
-//             formatter: (value, ctx) => {
-//                 return value + '%';
-//             },
-//         }
-//     }
-//   }
-// };
-
-// // チャートの生成
-// window.addEventListener("load", function() {
-//   let ctx = document.getElementById("myChart").getContext("2d");
-//   new Chart(ctx, config);
-// }, false);
-
-  // //円グラフ
-  // var ctx = document.getElementById("myDoughnutChart1");
-  // var myDoughnutChart= new Chart(ctx, {
-  //   type: 'doughnut',
-  //   data: {
-  //     labels: ["賛成", "反対", "わからない", "未回答"], //データ項目のラベル
-  //     datasets: [{
-  //         backgroundColor: [
-  //             "#c97586",
-  //             "#bbbcde",
-  //             "#93b881",
-  //             "#e6b422"
-  //         ],
-  //         data: [45, 32, 18, 5] //グラフのデータ
-  //     }]
-  //   },
-  //   options: {
-  //     title: {
-  //       title: {
-  //       display: true,
-  //       text: 'カスタムチャートタイトル'
-  //   }
-  //     }
-  //   }
-  // });
-  // var ctx = document.getElementById("myDoughnutChart2");
-  // var myDoughnutChart= new Chart(ctx, {
-  //   type: 'doughnut',
-  //   data: {
-  //     labels: ["賛成", "反対", "わからない", "未回答"], //データ項目のラベル
-  //     datasets: [{
-  //         backgroundColor: [
-  //             "#c97586",
-  //             "#bbbcde",
-  //             "#93b881",
-  //             "#e6b422"
-  //         ],
-  //         data: [45, 32, 18, 5] //グラフのデータ
-  //     }]
-  //   },
-  //   options: {
-  //     title: {
-  //       display: true,
-  //       //グラフタイトル
-  //     }
-  //   }
-  // });
-  
-
-
-
-  // window.onresize = function(){
-  //   drawChart();
-  // }
