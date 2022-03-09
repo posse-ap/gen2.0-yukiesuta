@@ -1,3 +1,6 @@
+<?php
+include dirname(__FILE__) . '/dbconnect.php';
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
