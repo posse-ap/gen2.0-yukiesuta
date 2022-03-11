@@ -88,6 +88,12 @@ study_language_id INT NOT NULL ,
 study_content_id INT NOT NULL 
 );
 INSERT INTO study_data (study_date,study_hour,study_language_id,study_content_id) VALUES
-('2022-03-05',2,3,3),
+('2022-03-11',2,3,3),
+('2022-03-11',2,3,3),
+('2022-03-11',2,3,3),
+('2022-03-11',2,3,3),
+('2022-03-11',2,3,3),
+('2022-03-11',2,3,3),
+('2022-03-11',2,3,3),
 ('2022-03-06',7,1,2),
 ('2022-03-07',8,3,3)

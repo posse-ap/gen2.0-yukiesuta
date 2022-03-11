@@ -1,5 +1,18 @@
 <?php
 include dirname(__FILE__) . '/dbconnect.php';
+$study_language_result = $dbh->query("SELECT * FROM study_languages")->fetchALL(PDO::FETCH_ASSOC);
+
+
+shuffle($study_language_result);
+foreach($study_language_result as $result){
+    echo $result['color'].PHP_EOL;
+}
+
+
+$today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m') = DATE_FORMAT(now(), '%Y%m')")->fetch(PDO::FETCH_ASSOC);
+print_r($today_study_time_result);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -126,10 +139,16 @@ include dirname(__FILE__) . '/dbconnect.php';
         </div>
         <div class="mask c_pointer" id="mask" onclick="modalClose()"></div>
     </div>
+
+
+
+
     <script>
-    const a = "<?= "weyi" ;?>"
-    // こんな感じで下準備する
-    </script>
+    <?php
+    $study_language_result = $dbh->query("SELECT * FROM study_languages")->fetchALL(PDO::FETCH_ASSOC);
+    ?>;
+
+</script>
 
 <script type="text/javascript" src="webapp.js">
 </script>
