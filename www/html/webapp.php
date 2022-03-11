@@ -9,8 +9,15 @@ foreach($study_language_result as $result){
 }
 
 
-$today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m') = DATE_FORMAT(now(), '%Y%m')")->fetch(PDO::FETCH_ASSOC);
-print_r($today_study_time_result);
+$today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m%d') = DATE_FORMAT(now(), '%Y%m%d')")->fetch(PDO::FETCH_ASSOC);
+
+$month_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m') = DATE_FORMAT(now(), '%Y%m')")->fetch(PDO::FETCH_ASSOC);
+
+$total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetch(PDO::FETCH_ASSOC);
+
+print_r($today_study_time_result ['SUM(study_hour)'] );
+print_r($month_study_time_result ['SUM(study_hour)'] );
+print_r($total_study_time_result ['SUM(study_hour)'] );
 
 
 ?>
@@ -20,7 +27,7 @@ print_r($today_study_time_result);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>posse web app</title>
+    <title><?=print_r($today_study_time_result ['SUM(study_hour)'] );?></title>
     
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
@@ -30,6 +37,7 @@ print_r($today_study_time_result);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <link href="webapp.css?v=<?=date('Y_m_d_H_i_s');?>" rel="stylesheet">
+    <link href="webapp_resp.css?v=<?=date('Y_m_d_H_i_s');?>" rel="stylesheet">
     
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
@@ -56,9 +64,9 @@ print_r($today_study_time_result);
         <div class="main">
             <div class="main_first_container">
                 <div class="hour">
-                    <div class="hour_box"><span class="period">Today</span><br><span class="figure">3</span><br><span class="unit">hour</div>
-                        <div class="hour_box"><span class="period">Month</span><br><span class="figure">120</span><br><span class="unit">hour</div>
-                            <div class="hour_box"><span class="period">Total</span><br><span class="figure">1348</span><br><span class="unit">hour</div>
+                    <div class="hour_box"><span class="period">Today</span><br><span class="figure"><?=print_r($today_study_time_result ['SUM(study_hour)'] )?></span><br><span class="unit">hour</div>
+                        <div class="hour_box"><span class="period">Month</span><br><span class="figure"><?=print_r($month_study_time_result ['SUM(study_hour)'] )?></span><br><span class="unit">hour</div>
+                            <div class="hour_box"><span class="period">Total</span><br><span class="figure"><?=print_r($total_study_time_result ['SUM(study_hour)'] )?></span><br><span class="unit">hour</div>
                             </div>
                             <div class="bar_graph">
                                 <div id="chart_div"></div>
