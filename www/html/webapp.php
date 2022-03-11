@@ -15,9 +15,9 @@ $month_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data W
 
 $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetch(PDO::FETCH_ASSOC);
 
-print_r($today_study_time_result ['SUM(study_hour)'] );
-print_r($month_study_time_result ['SUM(study_hour)'] );
-print_r($total_study_time_result ['SUM(study_hour)'] );
+$total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 
 ?>
@@ -64,9 +64,9 @@ print_r($total_study_time_result ['SUM(study_hour)'] );
         <div class="main">
             <div class="main_first_container">
                 <div class="hour">
-                    <div class="hour_box"><span class="period">Today</span><br><span class="figure"><?=print_r($today_study_time_result ['SUM(study_hour)'] )?></span><br><span class="unit">hour</div>
-                        <div class="hour_box"><span class="period">Month</span><br><span class="figure"><?=print_r($month_study_time_result ['SUM(study_hour)'] )?></span><br><span class="unit">hour</div>
-                            <div class="hour_box"><span class="period">Total</span><br><span class="figure"><?=print_r($total_study_time_result ['SUM(study_hour)'] )?></span><br><span class="unit">hour</div>
+                    <div class="hour_box"><span class="period">Today</span><br><span class="figure"><?=($today_study_time_result ['SUM(study_hour)'] )?></span><br><span class="unit">hour</div>
+                        <div class="hour_box"><span class="period">Month</span><br><span class="figure"><?=($month_study_time_result ['SUM(study_hour)'] )?></span><br><span class="unit">hour</div>
+                            <div class="hour_box"><span class="period">Total</span><br><span class="figure"><?=($total_study_time_result ['SUM(study_hour)'] )?></span><br><span class="unit">hour</div>
                             </div>
                             <div class="bar_graph">
                                 <div id="chart_div"></div>
