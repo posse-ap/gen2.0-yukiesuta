@@ -1,12 +1,15 @@
 <?php
 include dirname(__FILE__) . '/dbconnect.php';
-$study_language_result = $dbh->query("SELECT * FROM study_languages")->fetchALL(PDO::FETCH_ASSOC);
+// $study_language_result = $dbh->query("SELECT * FROM study_languages")->fetchALL(PDO::FETCH_ASSOC);
 
 
-shuffle($study_language_result);
-foreach($study_language_result as $result){
-    echo $result['color'].PHP_EOL;
-}
+// shuffle($study_language_result);
+// foreach($study_language_result as $result){
+//     echo $result['color'].PHP_EOL;
+// }
+
+$study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
+print_r($study_datum);
 
 
 $today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m%d') = DATE_FORMAT(now(), '%Y%m%d')")->fetch(PDO::FETCH_ASSOC);
@@ -14,11 +17,6 @@ $today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data W
 $month_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m') = DATE_FORMAT(now(), '%Y%m')")->fetch(PDO::FETCH_ASSOC);
 
 $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetch(PDO::FETCH_ASSOC);
-
-$total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -153,9 +151,13 @@ $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")
 
     <script>
     <?php
-    $study_language_result = $dbh->query("SELECT * FROM study_languages")->fetchALL(PDO::FETCH_ASSOC);
-    ?>;
+    $study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
+    print_r($study_datum);
 
+    ?>
+
+    const a = print_r($study_datum);
+    console.log(a);
 </script>
 
 <script type="text/javascript" src="webapp.js">
