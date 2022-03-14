@@ -14,6 +14,10 @@ print_r($study_datum);
 
 $today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m%d') = DATE_FORMAT(now(), '%Y%m%d')")->fetch(PDO::FETCH_ASSOC);
 
+if(!($today_study_time_result ['SUM(study_hour)'])){
+    $today_study_time_result ['SUM(study_hour)'] = 0 ;
+};
+
 $month_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m') = DATE_FORMAT(now(), '%Y%m')")->fetch(PDO::FETCH_ASSOC);
 
 $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetch(PDO::FETCH_ASSOC);
@@ -148,16 +152,14 @@ $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")
 
 
 
+<?php
+$study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
+$study_datum_array = json_encode($study_datum);
+?>
 
     <script>
-    <?php
-    $study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
-    print_r($study_datum);
-
-    ?>
-
-    const a = print_r($study_datum);
-    console.log(a);
+    let js_array = <?= $study_datum_array; ?>;
+    console.log(js_array[9]['study_hour']); 
 </script>
 
 <script type="text/javascript" src="webapp.js">

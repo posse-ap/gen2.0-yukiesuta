@@ -1,6 +1,5 @@
 "use strict";
 
-// console.log(a);
 const modal_open = document.getElementById("open");
 const modal_open_resp = document.getElementById("open_resp");
 const modal_close = document.getElementById("close");
@@ -58,21 +57,36 @@ function drawChart() {
   // 配列からデータの生成
   var data = google.visualization.arrayToDataTable([
     ['日付', 'データ'],
-    ['2',  14.99 ],
-    ['4',  12.98 ],
-    ['6',  13.99 ],
-    ['8',  16.08 ],           
-    ['10',  4], 
-    ['12',  13.48 ],
-    ['14',  15.53 ],
-    ['16',  14.99 ],
-    ['18',  12.98 ], 
-    ['20',  13.99 ],
-    ['22',  16.08 ],          
-    ['24',  4],
-    ['26',  13.48 ],
-    ['28',  15.53 ],
-    ['30',  14.99 ]
+    ['1',  Number(js_array[0]['study_hour']) ],
+    ['2',  Number(js_array[1]['study_hour']) ],
+    ['3',  Number(js_array[2]['study_hour']) ],
+    ['4',  Number(js_array[3]['study_hour']) ],           
+    ['5',  Number(js_array[4]['study_hour'])], 
+    ['6',  Number(js_array[5]['study_hour'])],
+    ['7',  Number(js_array[6]['study_hour']) ],
+    ['8',  Number(js_array[7]['study_hour']) ],
+    ['9',  Number(js_array[8]['study_hour']) ], 
+    ['10',  Number(js_array[9]['study_hour'])],
+    ['12',  Number(js_array[10]['study_hour'])],
+    ['13',  Number(js_array[10]['study_hour'])],
+    ['14',  Number(js_array[10]['study_hour'])],
+    ['15',  Number(js_array[10]['study_hour'])],
+    ['16',  Number(js_array[10]['study_hour'])],
+    ['17',  Number(js_array[10]['study_hour'])],
+    ['18',  Number(js_array[10]['study_hour'])],
+    ['19',  Number(js_array[10]['study_hour'])],
+    ['20',  Number(js_array[10]['study_hour'])],
+    ['21',  Number(js_array[10]['study_hour'])],
+    ['22',  Number(js_array[10]['study_hour'])],
+    ['23',  Number(js_array[10]['study_hour'])],
+    ['24',  Number(js_array[10]['study_hour'])],
+    ['25',  Number(js_array[10]['study_hour'])],
+    ['26',  Number(js_array[10]['study_hour'])],
+    ['27',  Number(js_array[10]['study_hour'])],
+    ['28',  Number(js_array[10]['study_hour'])],
+    ['29',  Number(js_array[10]['study_hour'])],
+    ['30',  Number(js_array[10]['study_hour'])],
+    ['31',  Number(js_array[10]['study_hour'])],
   ]);      
 
   // 指定されたIDの要素に棒グラフを作成
@@ -150,7 +164,7 @@ var dataLabelPlugin = {
           "#412ce5",
           "#291db9"
         ],
-        data: [30, 20, 10, 5, 20, 20, 10] //グラフのデータ
+        data: [4, 20, 10, 5, 20, 20, 10,6,5,5,5,5,5,5,5,5,5,5] //グラフのデータ
       }]
     },
     options: {
