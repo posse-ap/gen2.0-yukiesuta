@@ -9,7 +9,6 @@ include dirname(__FILE__) . '/dbconnect.php';
 // }
 
 $study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
-print_r($study_datum);
 
 
 $today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m%d') = DATE_FORMAT(now(), '%Y%m%d')")->fetch(PDO::FETCH_ASSOC);
@@ -19,8 +18,11 @@ if(!($today_study_time_result ['SUM(study_hour)'])){
 };
 
 $month_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m') = DATE_FORMAT(now(), '%Y%m')")->fetch(PDO::FETCH_ASSOC);
-
 $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetch(PDO::FETCH_ASSOC);
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -155,11 +157,25 @@ $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")
 <?php
 $study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
 $study_datum_array = json_encode($study_datum);
+
+$study_contents_result = $dbh->query("SELECT * FROM study_contents")->fetchAll(PDO::FETCH_ASSOC);
+$study_contents_result_array = json_encode($study_contents_result);
+
+$study_languages_result = $dbh->query("SELECT * FROM study_languages")->fetchAll(PDO::FETCH_ASSOC);
+$study_languages_result_array = json_encode($study_languages_result);
+
+
 ?>
 
     <script>
     let js_array = <?= $study_datum_array; ?>;
-    console.log(js_array[9]['study_hour']); 
+    let study_contents_array = <?=$study_contents_result_array; ?>;
+    let study_languages_array = <?=$study_languages_result_array; ?>;
+    console.log(study_languages_array)
+
+
+
+
 </script>
 
 <script type="text/javascript" src="webapp.js">

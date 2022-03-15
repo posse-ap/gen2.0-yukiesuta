@@ -152,19 +152,28 @@ var dataLabelPlugin = {
   var sircleGrafLanguages= new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "SQL", "SHELL", "その他"], //データ項目のラベル
+      labels: [
+        study_languages_array[0]['study_language'],
+          study_languages_array[1]['study_language'],
+          study_languages_array[2]['study_language'],
+          study_languages_array[3]['study_language'],
+          study_languages_array[4]['study_language'],
+          study_languages_array[5]['study_language'],
+          study_languages_array[6]['study_language'],
+          study_languages_array[7]['study_language'],
+      ], //データ項目のラベル
       datasets: [{
         backgroundColor: [
-          "#65ccf9",
-          "#2d72b8",
-          "#204be3",
-          "#55bbda",
-          "#aea1ee",
-          "#654fe4",
-          "#412ce5",
-          "#291db9"
+          study_languages_array[0]['color'],
+          study_languages_array[1]['color'],
+          study_languages_array[2]['color'],
+          study_languages_array[3]['color'],
+          study_languages_array[4]['color'],
+          study_languages_array[5]['color'],
+          study_languages_array[6]['color'],
+          study_languages_array[7]['color'],
         ],
-        data: [4, 20, 10, 5, 20, 20, 10,6,5,5,5,5,5,5,5,5,5,5] //グラフのデータ
+        data: [4, 20, 10, 5, 20, 20, 10] //グラフのデータ
       }]
     },
     options: {
@@ -187,12 +196,16 @@ var dataLabelPlugin = {
   var sircleGrafLanguages= new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ["N予備校", "ドットインストール", "その他",], //データ項目のラベル
+      labels: [
+        study_contents_array[0]['study_content'],
+        study_contents_array[1]['study_content'],
+        study_contents_array[2]['study_content']
+      ], //データ項目のラベル
       datasets: [{
         backgroundColor: [
-          "#65ccf9",
-          "#2d72b8",
-          "#204be3",
+          study_contents_array[0]['color'],
+          study_contents_array[1]['color'],
+          study_contents_array[2]['color']
         ],
         data: [30, 20, 10] //グラフのデータ
       }]
