@@ -1,12 +1,6 @@
 <?php
 include dirname(__FILE__) . '/dbconnect.php';
-// $study_language_result = $dbh->query("SELECT * FROM study_languages")->fetchALL(PDO::FETCH_ASSOC);
 
-
-// shuffle($study_language_result);
-// foreach($study_language_result as $result){
-//     echo $result['color'].PHP_EOL;
-// }
 
 $study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
 
@@ -155,7 +149,7 @@ $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")
 
 
 <?php
-$study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
+$study_datum = $dbh->query("SELECT * FROM study_data ")->fetchAll(PDO::FETCH_ASSOC);
 $study_datum_array = json_encode($study_datum);
 
 $study_contents_result = $dbh->query("SELECT * FROM study_contents")->fetchAll(PDO::FETCH_ASSOC);
@@ -163,6 +157,11 @@ $study_contents_result_array = json_encode($study_contents_result);
 
 $study_languages_result = $dbh->query("SELECT * FROM study_languages")->fetchAll(PDO::FETCH_ASSOC);
 $study_languages_result_array = json_encode($study_languages_result);
+
+// $stmt = $pdo->query(
+// 	"SELECT * FROM study_data INNER JOIN study_contents ON study_contents.id = study_data.study_content_id;"
+// );
+// $graph_data_contents  = $stmt->fetchAll();
 
 
 ?>
