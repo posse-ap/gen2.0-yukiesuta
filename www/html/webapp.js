@@ -52,45 +52,45 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {         
 
 // 配列からデータの生成
-var data = google.visualization.arrayToDataTable([
-['日付', 'データ'],
-['1',  Number(js_array[0]['study_hour']) ],
-['2',  Number(js_array[1]['study_hour']) ],
-['3',  Number(js_array[2]['study_hour']) ],
-['4',  Number(js_array[3]['study_hour']) ],           
-['5',  Number(js_array[4]['study_hour'])], 
-['6',  Number(js_array[5]['study_hour'])],
-['7',  Number(js_array[6]['study_hour']) ],
-['8',  Number(js_array[7]['study_hour']) ],
-['9',  Number(js_array[8]['study_hour']) ], 
-['10',  Number(js_array[9]['study_hour'])],
-['12',  Number(js_array[10]['study_hour'])],
-['13',  Number(js_array[10]['study_hour'])],
-['14',  Number(js_array[10]['study_hour'])],
-['15',  Number(js_array[10]['study_hour'])],
-['16',  Number(js_array[10]['study_hour'])],
-['17',  Number(js_array[10]['study_hour'])],
-['18',  Number(js_array[10]['study_hour'])],
-['19',  Number(js_array[10]['study_hour'])],
-['20',  Number(js_array[10]['study_hour'])],
-['21',  Number(js_array[10]['study_hour'])],
-['22',  Number(js_array[10]['study_hour'])],
-['23',  Number(js_array[10]['study_hour'])],
-['24',  Number(js_array[10]['study_hour'])],
-['25',  Number(js_array[10]['study_hour'])],
-['26',  Number(js_array[10]['study_hour'])],
-['27',  Number(js_array[10]['study_hour'])],
-['28',  Number(js_array[10]['study_hour'])],
-['29',  Number(js_array[10]['study_hour'])],
-['30',  Number(js_array[10]['study_hour'])],
-['31',  Number(js_array[10]['study_hour'])],
-]);      
+// ここの二重配列をうまく作れたら勝ち！！
+var data = [
+[1,  Number(js_array[0]['study_hour']) ],
+[2,  Number(js_array[1]['study_hour']) ],
+[3,  Number(js_array[2]['study_hour']) ],
+[4,  Number(js_array[3]['study_hour']) ],           
+[5,  Number(js_array[4]['study_hour'])], 
+[6,  Number(js_array[5]['study_hour'])],
+[7,  Number(js_array[6]['study_hour']) ],
+[8,  Number(js_array[7]['study_hour']) ],
+[9,  Number(js_array[8]['study_hour']) ], 
+[10,  Number(js_array[9]['study_hour'])],
+[12,  Number(js_array[10]['study_hour'])],
+[13,  Number(js_array[10]['study_hour'])],
+[14,  Number(js_array[10]['study_hour'])],
+[15,  Number(js_array[10]['study_hour'])],
+[16,  Number(js_array[10]['study_hour'])],
+[17,  Number(js_array[10]['study_hour'])],
+[18,  Number(js_array[10]['study_hour'])],
+[19,  Number(js_array[10]['study_hour'])],
+[20,  Number(js_array[10]['study_hour'])],
+[21,  Number(js_array[10]['study_hour'])],
+[22,  Number(js_array[10]['study_hour'])],
+[23,  Number(js_array[10]['study_hour'])],
+[24,  Number(js_array[10]['study_hour'])],
+[25,  Number(js_array[10]['study_hour'])],
+[26,  Number(js_array[10]['study_hour'])],
+[27,  Number(js_array[10]['study_hour'])],
+[28,  Number(js_array[10]['study_hour'])],
+[29,  Number(js_array[10]['study_hour'])],
+[30,  Number(js_array[10]['study_hour'])],
+[31,  Number(js_array[10]['study_hour'])],
+];      
 
 // 指定されたIDの要素に棒グラフを作成
 var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 
 // グラフの描画
-chart.draw(data,options);
+chart.draw(google.visualization.arrayToDataTable(data),options);
 }
 
 let options = {
