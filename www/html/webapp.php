@@ -103,7 +103,6 @@
                             ×
                         </div>
                         <div class="loading" id="loading">
-                            <!-- <img src="img/loading.png" class="loading_circle"> -->
                             <div class="loading_stmt">now loading</div>
                         </div>
                         <div class="modal_top" id="m_top">

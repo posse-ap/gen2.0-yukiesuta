@@ -143,21 +143,22 @@ var sircleGrafLanguages= new Chart(ctx, {
   plugins: [dataLabelPlugin],
 });
 
+let study_contents_label_array = [];
+  for (let i = 0; i < 3; i++) {
+    study_contents_label_array.push(study_contents_array[i]['study_content'])
+  };
+let study_contents_background_color_array = [];
+  for (let i = 0; i < 3; i++) {
+    study_contents_background_color_array.push(study_contents_array[i]['color'])
+  };
+
 var ctx = document.getElementById("sircleGrafLanguages2");
 var sircleGrafLanguages= new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: [
-      study_contents_array[0]['study_content'],
-      study_contents_array[1]['study_content'],
-      study_contents_array[2]['study_content']
-    ], //データ項目のラベル
+    labels: study_contents_label_array, //データ項目のラベル
     datasets: [{
-      backgroundColor: [
-        study_contents_array[0]['color'],
-        study_contents_array[1]['color'],
-        study_contents_array[2]['color']
-      ],
+      backgroundColor:study_contents_background_color_array,
       data:study_contents_datum_array //グラフのデータ
     }]
   },

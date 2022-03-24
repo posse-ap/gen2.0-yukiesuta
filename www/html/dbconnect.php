@@ -12,7 +12,6 @@
     // PDOインスタンスを生成
     $dbh = new PDO($dsn, $user, $password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo 'データベースにアクセスしました！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！' ;
       // エラー（例外）が発生した時の処理を記述
   } catch (PDOException $e) {
       // エラーメッセージを表示させる
