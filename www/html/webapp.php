@@ -164,6 +164,30 @@ $study_contents_result_array = json_encode($study_contents_result);
 $study_languages_result = $dbh->query("SELECT * FROM study_languages")->fetchAll(PDO::FETCH_ASSOC);
 $study_languages_result_array = json_encode($study_languages_result);
 
+$study_hour_datum = [];
+for ($i=1; $i < 6; $i++){ 
+    $study_datum1 = $dbh->query("SELECT sum(study_hour) FROM study_data WHERE study_language_id = $i")->fetch(PDO::FETCH_ASSOC);
+    if(!($study_datum1['sum(study_hour)'])){
+        $study_datum1['sum(study_hour)']=0;
+    };
+    // echo $study_datum1['sum(study_hour)'];
+    array_push($study_hour_datum,$study_datum1['sum(study_hour)']);
+}
+// print_r($study_hour_datum);
+$study_hour_datum_array = json_encode($study_hour_datum);
+
+$study_contents_datum = [];
+for ($i=1; $i < 4; $i++){ 
+    $study_datum1 = $dbh->query("SELECT sum(study_hour) FROM study_data WHERE study_content_id = $i")->fetch(PDO::FETCH_ASSOC);
+    if(!($study_datum1['sum(study_hour)'])){
+        $study_datum1['sum(study_hour)']=0;
+    };
+    // echo $study_datum1['sum(study_hour)'];
+    array_push($study_contents_datum,$study_datum1['sum(study_hour)']);
+}
+// print_r($study_hour_datum);
+$study_contents_datum_array = json_encode($study_contents_datum);
+
 
 ?>
 
@@ -171,7 +195,9 @@ $study_languages_result_array = json_encode($study_languages_result);
     let js_array = <?= $study_datum_array; ?>;
     let study_contents_array = <?=$study_contents_result_array; ?>;
     let study_languages_array = <?=$study_languages_result_array; ?>;
-    console.log(study_languages_array)
+    let study_hour_datum_array = <?=$study_hour_datum_array; ?>;
+    let study_contents_datum_array = <?=$study_contents_datum_array; ?>;
+
 
 
 

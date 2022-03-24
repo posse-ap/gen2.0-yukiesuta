@@ -137,7 +137,7 @@ let language_color_datum = [];
       labels: language_datum, //データ項目のラベル
       datasets: [{
         backgroundColor:language_color_datum,
-        data: [45, 20, 10, 5, 20, 20, 10] //グラフのデータ決めうち
+        data: study_hour_datum_array //グラフのデータ決めうち
       }]
     },
     options: {
@@ -171,7 +171,7 @@ let language_color_datum = [];
           study_contents_array[1]['color'],
           study_contents_array[2]['color']
         ],
-        data: [30, 20, 10] //グラフのデータ
+        data:study_contents_datum_array //グラフのデータ
       }]
     },
     options: {
