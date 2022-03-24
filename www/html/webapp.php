@@ -1,30 +1,47 @@
 <?php
-include dirname(__FILE__) . '/dbconnect.php';
-// $study_language_result = $dbh->query("SELECT * FROM study_languages")->fetchALL(PDO::FETCH_ASSOC);
+    include dirname(__FILE__) . '/dbconnect.php';
+
+    $study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
+    $today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m%d') = DATE_FORMAT(now(), '%Y%m%d')")->fetch(PDO::FETCH_ASSOC);
+
+    $month_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m') = DATE_FORMAT(now(), '%Y%m')")->fetch(PDO::FETCH_ASSOC);
+    $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetch(PDO::FETCH_ASSOC);
+
+    $study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
+    $study_datum_array = json_encode($study_datum);
+
+    $study_contents_result = $dbh->query("SELECT * FROM study_contents")->fetchAll(PDO::FETCH_ASSOC);
+    $study_contents_result_array = json_encode($study_contents_result);
+
+    $study_languages_result = $dbh->query("SELECT * FROM study_languages")->fetchAll(PDO::FETCH_ASSOC);
+    $study_languages_result_array = json_encode($study_languages_result);
 
 
-// shuffle($study_language_result);
-// foreach($study_language_result as $result){
-//     echo $result['color'].PHP_EOL;
-// }
+    if(!($today_study_time_result ['SUM(study_hour)'])){
+        $today_study_time_result ['SUM(study_hour)'] = 0 ;
+    };
 
-$study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
+    $study_hour_datum = [];
+    for ($i=1; $i < 9; $i++){ 
+        $study_datum1 = $dbh->query("SELECT sum(study_hour) FROM study_data WHERE study_language_id = $i")->fetch(PDO::FETCH_ASSOC);
+        if(!($study_datum1['sum(study_hour)'])){
+            $study_datum1['sum(study_hour)']=0;
+        };
+        array_push($study_hour_datum,$study_datum1['sum(study_hour)']);
+    }
+    $study_hour_datum_array = json_encode($study_hour_datum);
 
-
-$today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m%d') = DATE_FORMAT(now(), '%Y%m%d')")->fetch(PDO::FETCH_ASSOC);
-
-if(!($today_study_time_result ['SUM(study_hour)'])){
-    $today_study_time_result ['SUM(study_hour)'] = 0 ;
-};
-
-$month_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m') = DATE_FORMAT(now(), '%Y%m')")->fetch(PDO::FETCH_ASSOC);
-$total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetch(PDO::FETCH_ASSOC);
-
-
-
-
-
+    $study_contents_datum = [];
+    for ($i=1; $i < 4; $i++){ 
+        $study_datum1 = $dbh->query("SELECT sum(study_hour) FROM study_data WHERE study_content_id = $i")->fetch(PDO::FETCH_ASSOC);
+        if(!($study_datum1['sum(study_hour)'])){
+            $study_datum1['sum(study_hour)']=0;
+        };
+        array_push($study_contents_datum,$study_datum1['sum(study_hour)']);
+    }
+    $study_contents_datum_array = json_encode($study_contents_datum);
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -32,7 +49,7 @@ $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=print_r($today_study_time_result ['SUM(study_hour)'] );?></title>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
     integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
@@ -42,27 +59,21 @@ $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <link href="webapp.css?v=<?=date('Y_m_d_H_i_s');?>" rel="stylesheet">
     <link href="webapp_resp.css?v=<?=date('Y_m_d_H_i_s');?>" rel="stylesheet">
-    
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    
-    
     <script src="https://www.google.com/jsapi"></script>
-    
-    
 </head>
 <body>
     <header>
-        <div class="header_container">
+        <section class="header_container">
             <div><img src="img/posseLogo.png" alt="logo" class="logo"></div>
             <div class="week">4th week</div>
             <div class="link c_pointer" id="open" onclick="showModal()">記録・投稿</div>
-        </div>
+        </section>
     </header>
     <div class="all_container">
         <div class="main">
@@ -78,17 +89,9 @@ $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")
                         </div>
                         <div class="main_second_container">
                             <div class="pie_container">
-                                <!-- <div  class="pie" id="piechart" >
-                                    <canvas canvas id="myDoughnutChart1"></canvas>
-                                    はんれーかく
-                                </div> -->
                                 <canvas id="sircleGrafLanguages1"></canvas>
                             </div>
                             <div class="pie_container">
-                                <!-- <div class="pie" id="pie_graph2" >
-                                    <canvas id="myDoughnutChart2"></canvas>
-                                    はんれーかく
-                                </div> -->
                                 <canvas id="sircleGrafLanguages2"></canvas>
                             </div>
                         </div>
@@ -151,60 +154,13 @@ $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")
         </div>
         <div class="mask c_pointer" id="mask" onclick="modalClose()"></div>
     </div>
-
-
-
-<?php
-$study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
-$study_datum_array = json_encode($study_datum);
-
-$study_contents_result = $dbh->query("SELECT * FROM study_contents")->fetchAll(PDO::FETCH_ASSOC);
-$study_contents_result_array = json_encode($study_contents_result);
-
-$study_languages_result = $dbh->query("SELECT * FROM study_languages")->fetchAll(PDO::FETCH_ASSOC);
-$study_languages_result_array = json_encode($study_languages_result);
-
-$study_hour_datum = [];
-for ($i=1; $i < 6; $i++){ 
-    $study_datum1 = $dbh->query("SELECT sum(study_hour) FROM study_data WHERE study_language_id = $i")->fetch(PDO::FETCH_ASSOC);
-    if(!($study_datum1['sum(study_hour)'])){
-        $study_datum1['sum(study_hour)']=0;
-    };
-    // echo $study_datum1['sum(study_hour)'];
-    array_push($study_hour_datum,$study_datum1['sum(study_hour)']);
-}
-// print_r($study_hour_datum);
-$study_hour_datum_array = json_encode($study_hour_datum);
-
-$study_contents_datum = [];
-for ($i=1; $i < 4; $i++){ 
-    $study_datum1 = $dbh->query("SELECT sum(study_hour) FROM study_data WHERE study_content_id = $i")->fetch(PDO::FETCH_ASSOC);
-    if(!($study_datum1['sum(study_hour)'])){
-        $study_datum1['sum(study_hour)']=0;
-    };
-    // echo $study_datum1['sum(study_hour)'];
-    array_push($study_contents_datum,$study_datum1['sum(study_hour)']);
-}
-// print_r($study_hour_datum);
-$study_contents_datum_array = json_encode($study_contents_datum);
-
-
-?>
-
     <script>
-    let js_array = <?= $study_datum_array; ?>;
-    let study_contents_array = <?=$study_contents_result_array; ?>;
-    let study_languages_array = <?=$study_languages_result_array; ?>;
-    let study_hour_datum_array = <?=$study_hour_datum_array; ?>;
-    let study_contents_datum_array = <?=$study_contents_datum_array; ?>;
-
-
-
-
-
-</script>
-
-<script type="text/javascript" src="webapp.js">
-</script>
+        let js_array = <?= $study_datum_array; ?>;
+        let study_contents_array = <?=$study_contents_result_array; ?>;
+        let study_languages_array = <?=$study_languages_result_array; ?>;
+        let study_hour_datum_array = <?=$study_hour_datum_array; ?>.map(Number);
+        let study_contents_datum_array = <?=$study_contents_datum_array; ?>.map(Number);
+    </script>
+    <script type="text/javascript" src="webapp.js"></script>
 </body>
 </html>
