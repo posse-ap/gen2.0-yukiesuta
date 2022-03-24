@@ -49,45 +49,18 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 
-
+let hour_time_datum = [
+['日付', 'データ']
+  ];
+for (let i = 1; i < 32; i++) {
+  hour_time_datum.push([i,Number(js_array[i-1]['study_hour'])])
+};
 
 // グラフの描画   
 function drawChart() {         
       
   // 配列からデータの生成
-  var data = google.visualization.arrayToDataTable([
-    ['日付', 'データ'],
-    ['1',  Number(js_array[0]['study_hour']) ],
-    ['2',  Number(js_array[1]['study_hour']) ],
-    ['3',  Number(js_array[2]['study_hour']) ],
-    ['4',  Number(js_array[3]['study_hour']) ],           
-    ['5',  Number(js_array[4]['study_hour'])], 
-    ['6',  Number(js_array[5]['study_hour'])],
-    ['7',  Number(js_array[6]['study_hour']) ],
-    ['8',  Number(js_array[7]['study_hour']) ],
-    ['9',  Number(js_array[8]['study_hour']) ], 
-    ['10',  Number(js_array[9]['study_hour'])],
-    ['12',  Number(js_array[10]['study_hour'])],
-    ['13',  Number(js_array[10]['study_hour'])],
-    ['14',  Number(js_array[10]['study_hour'])],
-    ['15',  Number(js_array[10]['study_hour'])],
-    ['16',  Number(js_array[10]['study_hour'])],
-    ['17',  Number(js_array[10]['study_hour'])],
-    ['18',  Number(js_array[10]['study_hour'])],
-    ['19',  Number(js_array[10]['study_hour'])],
-    ['20',  Number(js_array[10]['study_hour'])],
-    ['21',  Number(js_array[10]['study_hour'])],
-    ['22',  Number(js_array[10]['study_hour'])],
-    ['23',  Number(js_array[10]['study_hour'])],
-    ['24',  Number(js_array[10]['study_hour'])],
-    ['25',  Number(js_array[10]['study_hour'])],
-    ['26',  Number(js_array[10]['study_hour'])],
-    ['27',  Number(js_array[10]['study_hour'])],
-    ['28',  Number(js_array[10]['study_hour'])],
-    ['29',  Number(js_array[10]['study_hour'])],
-    ['30',  Number(js_array[10]['study_hour'])],
-    ['31',  Number(js_array[10]['study_hour'])],
-  ]);      
+  var data = google.visualization.arrayToDataTable(hour_time_datum);      
 
   // 指定されたIDの要素に棒グラフを作成
   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -147,33 +120,24 @@ var dataLabelPlugin = {
   }
 };
 
+let language_datum = [];
+  for (let i = 0; i < 8; i++) {
+    language_datum.push(study_languages_array[i]['study_language'])
+  };
+let language_color_datum = [];
+  for (let i = 0; i < 8; i++) {
+    language_color_datum.push(study_languages_array[i]['color'])
+  };
+
 
   var ctx = document.getElementById("sircleGrafLanguages1");
   var sircleGrafLanguages= new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: [
-        study_languages_array[0]['study_language'],
-          study_languages_array[1]['study_language'],
-          study_languages_array[2]['study_language'],
-          study_languages_array[3]['study_language'],
-          study_languages_array[4]['study_language'],
-          study_languages_array[5]['study_language'],
-          study_languages_array[6]['study_language'],
-          study_languages_array[7]['study_language'],
-      ], //データ項目のラベル
+      labels: language_datum, //データ項目のラベル
       datasets: [{
-        backgroundColor: [
-          study_languages_array[0]['color'],
-          study_languages_array[1]['color'],
-          study_languages_array[2]['color'],
-          study_languages_array[3]['color'],
-          study_languages_array[4]['color'],
-          study_languages_array[5]['color'],
-          study_languages_array[6]['color'],
-          study_languages_array[7]['color'],
-        ],
-        data: [4, 20, 10, 5, 20, 20, 10] //グラフのデータ
+        backgroundColor:language_color_datum,
+        data: [45, 20, 10, 5, 20, 20, 10] //グラフのデータ決めうち
       }]
     },
     options: {
