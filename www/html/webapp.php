@@ -1,45 +1,5 @@
 <?php
-    include dirname(__FILE__) . '/dbconnect.php';
-
-    $study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
-    $today_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m%d') = DATE_FORMAT(now(), '%Y%m%d')")->fetch(PDO::FETCH_ASSOC);
-
-    $month_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data WHERE DATE_FORMAT(study_date, '%Y%m') = DATE_FORMAT(now(), '%Y%m')")->fetch(PDO::FETCH_ASSOC);
-    $total_study_time_result = $dbh->query("SELECT SUM(study_hour) FROM study_data")->fetch(PDO::FETCH_ASSOC);
-
-    $study_datum = $dbh->query("SELECT * FROM study_data")->fetchAll(PDO::FETCH_ASSOC);
-    $study_datum_array = json_encode($study_datum);
-
-    $study_contents_result = $dbh->query("SELECT * FROM study_contents")->fetchAll(PDO::FETCH_ASSOC);
-    $study_contents_result_array = json_encode($study_contents_result);
-
-    $study_languages_result = $dbh->query("SELECT * FROM study_languages")->fetchAll(PDO::FETCH_ASSOC);
-    $study_languages_result_array = json_encode($study_languages_result);
-
-
-    if(!($today_study_time_result ['SUM(study_hour)'])){
-        $today_study_time_result ['SUM(study_hour)'] = 0 ;
-    };
-
-    $study_hour_datum = [];
-    for ($i=1; $i < 9; $i++){ 
-        $study_datum1 = $dbh->query("SELECT sum(study_hour) FROM study_data WHERE study_language_id = $i")->fetch(PDO::FETCH_ASSOC);
-        if(!($study_datum1['sum(study_hour)'])){
-            $study_datum1['sum(study_hour)']=0;
-        };
-        array_push($study_hour_datum,$study_datum1['sum(study_hour)']);
-    }
-    $study_hour_datum_array = json_encode($study_hour_datum);
-
-    $study_contents_datum = [];
-    for ($i=1; $i < 4; $i++){ 
-        $study_datum1 = $dbh->query("SELECT sum(study_hour) FROM study_data WHERE study_content_id = $i")->fetch(PDO::FETCH_ASSOC);
-        if(!($study_datum1['sum(study_hour)'])){
-            $study_datum1['sum(study_hour)']=0;
-        };
-        array_push($study_contents_datum,$study_datum1['sum(study_hour)']);
-    }
-    $study_contents_datum_array = json_encode($study_contents_datum);
+    require_once(__DIR__ . '/dbconnect.php');
 ?>
 
 <!DOCTYPE html>
@@ -49,23 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>webapp</title>
-
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
     integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
     crossorigin="anonymous"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <link href="webapp.css?v=<?=date('Y_m_d_H_i_s');?>" rel="stylesheet">
     <link href="webapp_resp.css?v=<?=date('Y_m_d_H_i_s');?>" rel="stylesheet">
     <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://www.google.com/jsapi"></script>
 </head>
 <body>
     <header>
@@ -100,7 +51,7 @@
                     <div class="bottom_month">2020年 10月</div>
                     <div id="modal" class="modal">
                         <div class="modal_close c_pointer" id="close" onclick="modalClose()">
-                            ×
+                            x
                         </div>
                         <div class="loading" id="loading">
                             <div class="loading_stmt">now loading</div>

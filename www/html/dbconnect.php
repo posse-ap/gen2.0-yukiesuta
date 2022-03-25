@@ -19,3 +19,4 @@
       // 強制終了
     exit;
   }
+  require_once(__DIR__ . '/makesql.php');
